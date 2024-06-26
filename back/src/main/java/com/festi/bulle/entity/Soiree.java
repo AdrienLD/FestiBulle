@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "soiree")
 public class Soiree {
@@ -49,7 +48,7 @@ public class Soiree {
 
     @NotNull
     @Column(name = "est_payante", nullable = false)
-    private Boolean estPayante = false;
+    private Boolean estPayante;
 
     @Column(name = "prix", precision = 10, scale = 2)
     private BigDecimal prix;
@@ -60,7 +59,7 @@ public class Soiree {
 
     @NotNull
     @Column(name = "apportez_boissons_aperitifs", nullable = false)
-    private Boolean apportezBoissonsAperitifs = false;
+    private Boolean apportezBoissonsAperitifs;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -73,13 +72,13 @@ public class Soiree {
     private String typeSoiree;
 
     @OneToMany(mappedBy = "soiree")
-    private Set<Avi> avis = new LinkedHashSet<>();
+    private Set<Avi> avis;
 
     @OneToMany(mappedBy = "soiree")
-    private Set<Conversation> conversations = new LinkedHashSet<>();
+    private Set<Conversation> conversations;
 
     @OneToMany(mappedBy = "soiree")
-    private Set<Participation> participations = new LinkedHashSet<>();
+    private Set<Participation> participations;
 
     @OneToOne(mappedBy = "soiree")
     private Soireeclassique soireeclassique;
@@ -90,4 +89,50 @@ public class Soiree {
     @OneToOne(mappedBy = "soiree")
     private Soireejeuxvideo soireejeuxvideo;
 
+    public Soiree() {
+        this.datePublication = Instant.now();
+        this.avis = new LinkedHashSet<>();
+        this.conversations = new LinkedHashSet<>();
+        this.participations = new LinkedHashSet<>();
+    }
+
+    public Soiree(String nom, Instant dateHeure, Adresse adresse, Integer nbPlacesTotal, Utilisateur organisateur, String typeSoiree, Boolean estPayante, Boolean apportezBoissonsAperitifs) {
+        this();
+        this.nom = nom;
+        this.dateHeure = dateHeure;
+        this.adresse = adresse;
+        this.nbPlacesTotal = nbPlacesTotal;
+        this.nbPlacesRestantes = nbPlacesTotal;
+        this.organisateur = organisateur;
+        this.typeSoiree = typeSoiree;
+        this.estPayante = estPayante;
+        this.apportezBoissonsAperitifs = apportezBoissonsAperitifs;
+    }
+
+    public void addParticipation(Participation participation) {
+        this.participations.add(participation);
+        participation.setSoiree(this);
+        this.nbPlacesRestantes--;
+    }
+
+    public void removeParticipation(Participation participation) {
+        this.participations.remove(participation);
+        participation.setSoiree(null);
+        this.nbPlacesRestantes++;
+    }
+
+    public void addAvis(Avi avis) {
+        this.avis.add(avis);
+        avis.setSoiree(this);
+    }
+
+    public void removeAvis(Avi avis) {
+        this.avis.remove(avis);
+        avis.setSoiree(null);
+    }
+
+    public void setPrix(BigDecimal prix) {
+        this.prix = prix;
+        this.estPayante = (prix != null && prix.compareTo(BigDecimal.ZERO) > 0);
+    }
 }

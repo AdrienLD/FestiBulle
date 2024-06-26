@@ -8,7 +8,6 @@ import java.time.Instant;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "avis")
 public class Avi {
@@ -39,4 +38,19 @@ public class Avi {
     @JoinColumn(name = "soiree_id", nullable = false)
     private Soiree soiree;
 
+    public Avi() {
+        this.dateCreation = Instant.now();
+    }
+
+    public Avi(Integer note, Utilisateur utilisateur, Soiree soiree) {
+        this();
+        this.note = note;
+        this.utilisateur = utilisateur;
+        this.soiree = soiree;
+    }
+
+    public Avi(String commentaire, Integer note, Utilisateur utilisateur, Soiree soiree) {
+        this(note, utilisateur, soiree);
+        this.commentaire = commentaire;
+    }
 }

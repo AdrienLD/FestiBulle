@@ -6,7 +6,6 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "soireeclassique")
 public class Soireeclassique {
@@ -23,4 +22,29 @@ public class Soireeclassique {
     @Column(name = "theme", length = 100)
     private String theme;
 
+    public Soireeclassique() {
+    }
+
+    public Soireeclassique(Soiree soiree) {
+        this.soiree = soiree;
+        this.id = soiree.getId();
+    }
+
+    public Soireeclassique(Soiree soiree, String theme) {
+        this(soiree);
+        this.theme = theme;
+    }
+
+    public void setSoiree(Soiree soiree) {
+        this.soiree = soiree;
+        this.id = soiree.getId();
+    }
+
+    public void removeSoiree() {
+        if (this.soiree != null) {
+            this.soiree.setSoireeclassique(null);
+            this.soiree = null;
+            this.id = null;
+        }
+    }
 }

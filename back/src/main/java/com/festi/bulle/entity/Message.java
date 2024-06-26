@@ -8,7 +8,6 @@ import java.time.Instant;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "message")
 public class Message {
@@ -36,4 +35,22 @@ public class Message {
     @JoinColumn(name = "conversation_id", nullable = false)
     private Conversation conversation;
 
+    public Message() {
+        this.dateEnvoi = Instant.now();
+    }
+
+    public Message(String contenu, Utilisateur utilisateur, Conversation conversation) {
+        this();
+        this.contenu = contenu;
+        this.utilisateur = utilisateur;
+        this.conversation = conversation;
+    }
+
+    public void addToConversation() {
+        this.conversation.getMessages().add(this);
+    }
+
+    public void removeFromConversation() {
+        this.conversation.getMessages().remove(this);
+    }
 }

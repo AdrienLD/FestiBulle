@@ -3,14 +3,14 @@ package com.festi.bulle.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "adresse")
 public class Adresse {
@@ -45,9 +45,26 @@ public class Adresse {
     private String codePostal;
 
     @OneToMany(mappedBy = "adresse")
-    private Set<Soiree> soirees = new LinkedHashSet<>();
+    private Set<Soiree> soirees;
 
     @OneToMany(mappedBy = "adresse")
-    private Set<Utilisateur> utilisateurs = new LinkedHashSet<>();
+    private Set<Utilisateur> utilisateurs;
 
+    public Adresse() {
+        this.soirees = new LinkedHashSet<>();
+        this.utilisateurs = new LinkedHashSet<>();
+    }
+
+    public Adresse(String libelle, String ville, String region, String codePostal) {
+        this();
+        this.libelle = libelle;
+        this.ville = ville;
+        this.region = region;
+        this.codePostal = codePostal;
+    }
+
+    public Adresse(String nomLieu, String libelle, String ville, String region, String codePostal) {
+        this(libelle, ville, region, codePostal);
+        this.nomLieu = nomLieu;
+    }
 }

@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
@@ -47,7 +47,7 @@ public class Utilisateur {
     private LocalDate dateNaissance;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "adresse_id", nullable = false)
     private Adresse adresse;
 
@@ -59,18 +59,37 @@ public class Utilisateur {
     private Double noteMoyenne;
 
     @OneToMany(mappedBy = "utilisateur")
-    private Set<Avi> avis = new LinkedHashSet<>();
+    private Set<Avi> avis;
 
     @OneToMany(mappedBy = "utilisateur")
-    private Set<Message> messages = new LinkedHashSet<>();
+    private Set<Message> messages;
 
     @OneToMany(mappedBy = "utilisateur")
-    private Set<Participation> participations = new LinkedHashSet<>();
+    private Set<Participation> participations;
 
     @OneToMany(mappedBy = "organisateur")
-    private Set<Soiree> soirees = new LinkedHashSet<>();
+    private Set<Soiree> soirees;
 
     @ManyToMany(mappedBy = "utilisateurs")
-    private Set<Conversation> conversations = new LinkedHashSet<>();
+    private Set<Conversation> conversations;
 
+    public Utilisateur() {
+        this.centresInterets = new ArrayList<>();
+        this.noteMoyenne = 0.0;
+        this.avis = new LinkedHashSet<>();
+        this.messages = new LinkedHashSet<>();
+        this.participations = new LinkedHashSet<>();
+        this.soirees = new LinkedHashSet<>();
+        this.conversations = new LinkedHashSet<>();
+        this.adresse = new Adresse("", "", "", "", "");
+        this.dateNaissance= LocalDate.now().minusYears(18);
+        this.prenom = "";
+    }
+
+    public Utilisateur(String email, String motDePasse, String nom) {
+        this();
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.nom = nom;
+    }
 }

@@ -36,4 +36,21 @@ public class UtilisateurConversationId implements java.io.Serializable {
         return Objects.hash(conversationId, utilisateurId);
     }
 
+    public UtilisateurConversationId() {}
+
+    // Constructeur avec les deux IDs
+    public UtilisateurConversationId(Integer utilisateurId, Integer conversationId) {
+        this.utilisateurId = utilisateurId;
+        this.conversationId = conversationId;
+    }
+
+    // Override toString() pour une meilleure représentation de l'objet
+    @Override
+    public String toString() {
+        return "UtilisateurConversationId{" +
+                "utilisateurId=" + utilisateurId +
+                ", conversationId=" + conversationId +
+                '}';
+    }
+
 }

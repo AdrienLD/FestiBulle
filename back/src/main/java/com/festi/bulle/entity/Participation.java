@@ -9,7 +9,6 @@ import java.time.Instant;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "participation")
 public class Participation {
@@ -41,4 +40,29 @@ public class Participation {
     @Column(name = "date_reponse")
     private Instant dateReponse;
 
+    public Participation() {
+        this.dateDemande = Instant.now();
+        this.statut = "EN_ATTENTE";
+    }
+
+    public Participation(Utilisateur utilisateur, Soiree soiree) {
+        this();
+        this.utilisateur = utilisateur;
+        this.soiree = soiree;
+    }
+
+    public void updateStatut(String nouveauStatut) {
+        this.statut = nouveauStatut;
+        this.dateReponse = Instant.now();
+    }
+
+    public void addToUtilisateurAndSoiree() {
+        this.utilisateur.getParticipations().add(this);
+        this.soiree.getParticipations().add(this);
+    }
+
+    public void removeFromUtilisateurAndSoiree() {
+        this.utilisateur.getParticipations().remove(this);
+        this.soiree.getParticipations().remove(this);
+    }
 }

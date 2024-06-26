@@ -5,11 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "soireejeuxvideo")
 public class Soireejeuxvideo {
@@ -34,4 +34,64 @@ public class Soireejeuxvideo {
     @Column(name = "nb_pc_disponibles")
     private Integer nbPcDisponibles;
 
+    public Soireejeuxvideo() {
+        this.jeuxProposes = new ArrayList<>();
+    }
+
+    public Soireejeuxvideo(Soiree soiree, String plateforme) {
+        this();
+        this.soiree = soiree;
+        this.id = soiree.getId();
+        this.plateforme = plateforme;
+    }
+
+    public Soireejeuxvideo(Soiree soiree, String plateforme, List<String> jeuxProposes, Integer nbPcDisponibles) {
+        this(soiree, plateforme);
+        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+        this.nbPcDisponibles = nbPcDisponibles;
+    }
+
+    public void setSoiree(Soiree soiree) {
+        this.soiree = soiree;
+        this.id = soiree.getId();
+    }
+
+    public void removeSoiree() {
+        if (this.soiree != null) {
+            this.soiree.setSoireejeuxvideo(null);
+            this.soiree = null;
+            this.id = null;
+        }
+    }
+
+    public void addJeu(String jeu) {
+        if (this.jeuxProposes == null) {
+            this.jeuxProposes = new ArrayList<>();
+        }
+        this.jeuxProposes.add(jeu);
+    }
+
+    public void removeJeu(String jeu) {
+        if (this.jeuxProposes != null) {
+            this.jeuxProposes.remove(jeu);
+        }
+    }
+
+    public void setJeuxProposes(List<String> jeuxProposes) {
+        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+    }
+
+    public void incrementNbPcDisponibles() {
+        if (this.nbPcDisponibles == null) {
+            this.nbPcDisponibles = 1;
+        } else {
+            this.nbPcDisponibles++;
+        }
+    }
+
+    public void decrementNbPcDisponibles() {
+        if (this.nbPcDisponibles != null && this.nbPcDisponibles > 0) {
+            this.nbPcDisponibles--;
+        }
+    }
 }

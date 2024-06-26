@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "conversation")
 public class Conversation {
@@ -30,15 +29,41 @@ public class Conversation {
 
     @NotNull
     @Column(name = "est_groupe", nullable = false)
-    private Boolean estGroupe = false;
+    private Boolean estGroupe;
 
     @OneToMany(mappedBy = "conversation")
-    private Set<Message> messages = new LinkedHashSet<>();
+    private Set<Message> messages;
 
     @ManyToMany
     @JoinTable(name = "utilisateur_conversation",
             joinColumns = @JoinColumn(name = "conversation_id"),
             inverseJoinColumns = @JoinColumn(name = "utilisateur_id"))
-    private Set<Utilisateur> utilisateurs = new LinkedHashSet<>();
+    private Set<Utilisateur> utilisateurs;
 
+    public Conversation() {
+        this.dateCreation = Instant.now();
+        this.estGroupe = false;
+        this.messages = new LinkedHashSet<>();
+        this.utilisateurs = new LinkedHashSet<>();
+    }
+
+    public Conversation(boolean estGroupe) {
+        this();
+        this.estGroupe = estGroupe;
+    }
+
+    public Conversation(Soiree soiree, boolean estGroupe) {
+        this(estGroupe);
+        this.soiree = soiree;
+    }
+
+    public void addUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.add(utilisateur);
+        utilisateur.getConversations().add(this);
+    }
+
+    public void removeUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.remove(utilisateur);
+        utilisateur.getConversations().remove(this);
+    }
 }

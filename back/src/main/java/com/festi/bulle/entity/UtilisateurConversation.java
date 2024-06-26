@@ -5,7 +5,6 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "utilisateur_conversation")
 public class UtilisateurConversation {
@@ -23,4 +22,33 @@ public class UtilisateurConversation {
     @JoinColumn(name = "conversation_id", nullable = false)
     private Conversation conversation;
 
+    public UtilisateurConversation() {
+        this.id = new UtilisateurConversationId();
+    }
+
+    public UtilisateurConversation(Utilisateur utilisateur, Conversation conversation) {
+        this.id = new UtilisateurConversationId(utilisateur.getId(), conversation.getId());
+        this.utilisateur = utilisateur;
+        this.conversation = conversation;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        this.id.setUtilisateurId(utilisateur.getId());
+    }
+
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+        this.id.setConversationId(conversation.getId());
+    }
+
+    public void addToUtilisateurAndConversation() {
+        utilisateur.getConversations().add(conversation);
+        conversation.getUtilisateurs().add(utilisateur);
+    }
+
+    public void removeFromUtilisateurAndConversation() {
+        utilisateur.getConversations().remove(conversation);
+        conversation.getUtilisateurs().remove(utilisateur);
+    }
 }
