@@ -22,6 +22,6 @@ public class Soireejeuxsociete {
 
     @Column(name = "jeux_proposes")
     @ElementCollection
-    private List<String> jeuxProposess;
+    private List<String> jeuxProposes;
 
 }
