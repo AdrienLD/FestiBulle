@@ -37,7 +37,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         UtilisateurDTO utilisateur = utilisateurService.loginUtilisateur(request);
-        String token = jwtService.generateToken(utilisateur.getEmail());
+        String token = jwtService.generateToken(utilisateur.getId().toString());
         Map<String, Object> response = new HashMap<>();
         response.put("utilisateur", utilisateur);
         response.put("token", token);

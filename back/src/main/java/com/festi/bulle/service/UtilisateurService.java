@@ -62,5 +62,24 @@ public class UtilisateurService {
         return utilisateurMapper.toDTO(utilisateur);
     }
 
-    // Autres méthodes CRUD...
+    @Transactional
+    public UtilisateurDTO updateUtilisateur(Integer id, UtilisateurDTO utilisateurDTO) {
+        utilisateurRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+
+        Utilisateur user = utilisateurMapper.toEntity(utilisateurDTO);
+        user.setId(id);
+        return utilisateurMapper.toDTO(utilisateurRepository.save(user));
+    }
+
+    @Transactional
+    public void deleteUtilisateur(Integer id) {
+        utilisateurRepository.deleteById(id);
+    }
+
+   /* @Transactional(readOnly = true)
+    public Page<AvisDTO> getAvisUtilisateur(Integer id, Pageable pageable) {
+        return avisRepository.findByUtilisateurId(id, pageable)
+                .map(avisMapper::toDTO);
+    } */
 }
