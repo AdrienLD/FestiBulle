@@ -11,7 +11,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import { registerUser } from '../API'
+import { connectionUser, registerUser } from '../API'
+import { useRouter } from 'next/navigation'
 
 const LoginPage: React.FC = () => {
   const [ nom, setNom ] = React.useState('')
@@ -19,24 +20,26 @@ const LoginPage: React.FC = () => {
   const [ password, setPassword ] = React.useState('')
   const [ isEighteenOrOlder, setIsEighteenOrOlder ] = React.useState(false)
 
+  const router = useRouter()
+
   const inscription = async () => {
     if (!isEighteenOrOlder) {
       alert('Vous devez avoir plus de 18 ans pour vous inscrire')
       return
     } else {
+      console.log('Inscription')
       const register = await registerUser(nom, mail, password)
-      console.log(register)
-
-    }
-        
+      console.log(register.token)
+      localStorage.setItem('token', register.token)
+      router.push('/')
+    } 
   }
 
   const connection = async () => {
-    console.log('Connexion')
-    console.log('Nom:', nom)
-    console.log('Mail:', mail)
-    console.log('Password', password)
-    console.log('isEighteenOrOlder:', isEighteenOrOlder)
+    const register = await connectionUser(mail, password)
+    console.log(register.token)
+    localStorage.setItem('token', register.token)
+    router.push('/')
 
   }
 
