@@ -55,8 +55,8 @@ public class SoireeController {
 
     @GetMapping
     @Operation(summary = "Récupérer la liste des soirées")
-    public ResponseEntity<Page<SoireeDTO>> listerSoirees(Pageable pageable) {
-        Page<SoireeDTO> soirees = soireeService.getAllSoirees(pageable);
+    public ResponseEntity<List<SoireeDTO>> listerSoirees(Pageable pageable) {
+        List<SoireeDTO> soirees = soireeService.getAllSoirees(pageable);
         return ResponseEntity.ok(soirees);
     }
 

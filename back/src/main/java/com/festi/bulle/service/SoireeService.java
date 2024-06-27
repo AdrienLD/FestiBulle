@@ -42,8 +42,8 @@ public class SoireeService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SoireeDTO> getAllSoirees(Pageable pageable) {
-        return soireeRepository.findAll(pageable).map(soireeMapper::toDTO);
+    public List<SoireeDTO> getAllSoirees(Pageable pageable) {
+        return soireeRepository.findAll(pageable).stream().map(soireeMapper::toDTO).toList();
     }
 
     @CacheEvict(value = "soirees", key = "#id")

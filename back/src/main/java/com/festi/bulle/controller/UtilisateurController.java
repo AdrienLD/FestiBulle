@@ -3,6 +3,7 @@ package com.festi.bulle.controller;
 import com.festi.bulle.dto.LoginRequest;
 import com.festi.bulle.dto.RegisterRequest;
 import com.festi.bulle.dto.UtilisateurDTO;
+import com.festi.bulle.service.JWTService;
 import com.festi.bulle.service.UtilisateurService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,14 +20,36 @@ import org.springframework.web.bind.annotation.*;
 public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;
+    private final JWTService jwtService;
 
-    public UtilisateurController(UtilisateurService utilisateurService) {
+    public UtilisateurController(UtilisateurService utilisateurService, JWTService jwtService) {
         this.utilisateurService = utilisateurService;
+        this.jwtService = jwtService;
+    }
+
+    private String extractToken(String authHeader) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7);
+        }
+        throw new RuntimeException("Token JWT invalide ou manquant");
+    }
+
+    private Integer getUserIdFromToken(String token) {
+        String userId = jwtService.extractUsername(token);
+        return Integer.parseInt(userId);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Récupérer un utilisateur par son ID")
     public ResponseEntity<UtilisateurDTO> getUtilisateur(@PathVariable Integer id) {
+        return ResponseEntity.ok(utilisateurService.getUtilisateur(id));
+    }
+
+    @GetMapping("/profile")
+    @Operation(summary = "Récupérer un utilisateur par son ID")
+    public ResponseEntity<UtilisateurDTO> getProfile( @RequestHeader("Authorization") String authHeader) {
+        String token = extractToken(authHeader);
+        Integer id = getUserIdFromToken(token);
         return ResponseEntity.ok(utilisateurService.getUtilisateur(id));
     }
 

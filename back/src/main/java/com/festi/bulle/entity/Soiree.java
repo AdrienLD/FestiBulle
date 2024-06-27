@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -31,7 +31,7 @@ public class Soiree {
 
     @NotNull
     @Column(name = "date_heure", nullable = false)
-    private Instant dateHeure;
+    private Date dateHeure;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -55,7 +55,7 @@ public class Soiree {
 
     @NotNull
     @Column(name = "date_publication", nullable = false)
-    private Instant datePublication;
+    private Date datePublication;
 
     @NotNull
     @Column(name = "apportez_boissons_aperitifs", nullable = false)
@@ -90,23 +90,33 @@ public class Soiree {
     private Soireejeuxvideo soireejeuxvideo;
 
     public Soiree() {
-        this.datePublication = Instant.now();
+        this.datePublication = new Date();
         this.avis = new LinkedHashSet<>();
         this.conversations = new LinkedHashSet<>();
         this.participations = new LinkedHashSet<>();
     }
 
-    public Soiree(String nom, Instant dateHeure, Adresse adresse, Integer nbPlacesTotal, Utilisateur organisateur, String typeSoiree, Boolean estPayante, Boolean apportezBoissonsAperitifs) {
+    public Soiree(String nom, Date dateHeure, Adresse adresse, Integer nbPlacesTotal, Utilisateur organisateur, String typeSoiree, Boolean estPayante, Boolean apportezBoissonsAperitifs) {
         this();
         this.nom = nom;
         this.dateHeure = dateHeure;
         this.adresse = adresse;
         this.nbPlacesTotal = nbPlacesTotal;
-        this.nbPlacesRestantes = nbPlacesTotal;
+        this.nbPlacesRestantes = 99999;
         this.organisateur = organisateur;
         this.typeSoiree = typeSoiree;
         this.estPayante = estPayante;
         this.apportezBoissonsAperitifs = apportezBoissonsAperitifs;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        if (datePublication == null) {
+            datePublication = new Date();
+        }
+        if(nbPlacesRestantes == null) {
+            nbPlacesRestantes = 99999;
+        }
     }
 
     public void addParticipation(Participation participation) {
