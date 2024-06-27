@@ -21,11 +21,10 @@ public class Soireejeuxsociete {
     private Soiree soiree;
 
     @Column(name = "jeux_proposes")
-    @ElementCollection
-    private List<String> jeuxProposes;
+    private String jeuxProposes;
 
     public Soireejeuxsociete() {
-        this.jeuxProposes = new ArrayList<>();
+        this.jeuxProposes = "";
     }
 
     public Soireejeuxsociete(Soiree soiree) {
@@ -34,9 +33,9 @@ public class Soireejeuxsociete {
         this.id = soiree.getId();
     }
 
-    public Soireejeuxsociete(Soiree soiree, List<String> jeuxProposes) {
+    public Soireejeuxsociete(Soiree soiree, String jeuxProposes) {
         this(soiree);
-        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+        this.jeuxProposes = jeuxProposes;
     }
 
     // Méthode pour associer une Soiree
@@ -53,20 +52,7 @@ public class Soireejeuxsociete {
         }
     }
 
-    public void addJeu(String jeu) {
-        if (this.jeuxProposes == null) {
-            this.jeuxProposes = new ArrayList<>();
-        }
-        this.jeuxProposes.add(jeu);
-    }
-
-    public void removeJeu(String jeu) {
-        if (this.jeuxProposes != null) {
-            this.jeuxProposes.remove(jeu);
-        }
-    }
-
-    public void setJeuxProposes(List<String> jeuxProposes) {
-        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+    public void updateJeu(String jeu) {
+        this.jeuxProposes = jeu;
     }
 }

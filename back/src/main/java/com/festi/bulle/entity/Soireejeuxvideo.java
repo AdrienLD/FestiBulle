@@ -28,14 +28,13 @@ public class Soireejeuxvideo {
     private String plateforme;
 
     @Column(name = "jeux_proposes")
-    @ElementCollection
-    private List<String> jeuxProposes;
+    private String jeuxProposes;
 
     @Column(name = "nb_pc_disponibles")
     private Integer nbPcDisponibles;
 
     public Soireejeuxvideo() {
-        this.jeuxProposes = new ArrayList<>();
+        this.jeuxProposes = "";
     }
 
     public Soireejeuxvideo(Soiree soiree, String plateforme) {
@@ -45,9 +44,9 @@ public class Soireejeuxvideo {
         this.plateforme = plateforme;
     }
 
-    public Soireejeuxvideo(Soiree soiree, String plateforme, List<String> jeuxProposes, Integer nbPcDisponibles) {
+    public Soireejeuxvideo(Soiree soiree, String plateforme, String jeuxProposes, Integer nbPcDisponibles) {
         this(soiree, plateforme);
-        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+        this.jeuxProposes = jeuxProposes;
         this.nbPcDisponibles = nbPcDisponibles;
     }
 
@@ -65,20 +64,7 @@ public class Soireejeuxvideo {
     }
 
     public void addJeu(String jeu) {
-        if (this.jeuxProposes == null) {
-            this.jeuxProposes = new ArrayList<>();
-        }
-        this.jeuxProposes.add(jeu);
-    }
-
-    public void removeJeu(String jeu) {
-        if (this.jeuxProposes != null) {
-            this.jeuxProposes.remove(jeu);
-        }
-    }
-
-    public void setJeuxProposes(List<String> jeuxProposes) {
-        this.jeuxProposes = new ArrayList<>(jeuxProposes);
+        this.jeuxProposes = jeu;
     }
 
     public void incrementNbPcDisponibles() {

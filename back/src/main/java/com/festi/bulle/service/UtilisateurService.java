@@ -52,24 +52,14 @@ public class UtilisateurService {
 
     @Transactional
     public UtilisateurDTO loginUtilisateur(LoginRequest loginRequest) {
-        System.out.println("login"+loginRequest);
         Utilisateur utilisateur = utilisateurRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new RuntimeException("Email ou mot de passe incorrect"));
-
-        System.out.println("utilisateur"+utilisateur);
 
         if (!BCrypt.checkpw(loginRequest.getMotDePasse(), utilisateur.getMotDePasse())) {
             throw new RuntimeException("Email ou mot de passe incorrect");
         }
 
         return utilisateurMapper.toDTO(utilisateur);
-    }
-
-    @Transactional
-    public boolean verifyPassword(String email, String password) {
-        Utilisateur utilisateur = utilisateurRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-        return BCrypt.checkpw(password, utilisateur.getMotDePasse());
     }
 
     // Autres méthodes CRUD...

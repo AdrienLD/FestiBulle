@@ -8,7 +8,6 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -52,8 +51,7 @@ public class Utilisateur {
     private Adresse adresse;
 
     @Column(name = "centres_interets")
-    @ElementCollection
-    private List<String> centresInterets;
+    private String centresInterets;
 
     @Column(name = "note_moyenne")
     private Double noteMoyenne;
@@ -74,7 +72,7 @@ public class Utilisateur {
     private Set<Conversation> conversations;
 
     public Utilisateur() {
-        this.centresInterets = new ArrayList<>();
+        this.centresInterets = "";
         this.noteMoyenne = 0.0;
         this.avis = new LinkedHashSet<>();
         this.messages = new LinkedHashSet<>();

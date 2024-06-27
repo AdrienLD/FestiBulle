@@ -19,7 +19,7 @@ public class UtilisateurDTO {
     private String prenom;
     private String motDePasse;
     private LocalDate dateNaissance;
-    private Adresse adresse;
-    private List<String> centresInterets;
+    private AdresseDTO adresse;
+    private String centresInterets;
     private Double noteMoyenne;
 }

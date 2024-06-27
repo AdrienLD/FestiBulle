@@ -5,7 +5,7 @@ import com.festi.bulle.entity.Utilisateur;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = AdresseMapper.class)
 public interface UtilisateurMapper {
 
     @Mapping(target = "motDePasse", ignore = true)
