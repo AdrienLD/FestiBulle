@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/soirees")
 @Tag(name = "Soirée", description = "API de gestion des soirées")
+@CrossOrigin(origins = "http://localhost:3000")
 @SecurityRequirement(name = "bearerAuth")
 public class SoireeController {
 
