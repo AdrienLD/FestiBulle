@@ -28,7 +28,7 @@ const Filtres: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-wrap bg-card p-4 rounded-lg shadow-lg w-[80%]">
+    <div className="flex flex-wrap bg-card p-4 rounded-lg shadow-lg w-full">
       <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 justify-between w-full">
         <div>
           <Label htmlFor="city">Ville</Label>
@@ -73,7 +73,7 @@ const Filtres: React.FC = () => {
                 }</span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[300px] p-4">
+            <PopoverContent className="w-full p-4">
               <div className="grid gap-4">
                 <div className="grid grid-cols-2 gap-2">
                   <Select 
