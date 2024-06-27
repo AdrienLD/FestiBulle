@@ -40,11 +40,11 @@ public class Soiree {
 
     @NotNull
     @Column(name = "nb_places_total", nullable = false)
-    private Integer nbPlacesTotal;
+    private int nbPlacesTotal;
 
     @NotNull
     @Column(name = "nb_places_restantes", nullable = false)
-    private Integer nbPlacesRestantes;
+    private int nbPlacesRestantes;
 
     @NotNull
     @Column(name = "est_payante", nullable = false)
@@ -74,7 +74,7 @@ public class Soiree {
     @OneToMany(mappedBy = "soiree")
     private Set<Avi> avis;
 
-    @OneToMany(mappedBy = "soiree")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "soiree")
     private Set<Conversation> conversations;
 
     @OneToMany(mappedBy = "soiree")
@@ -96,7 +96,7 @@ public class Soiree {
         this.participations = new LinkedHashSet<>();
     }
 
-    public Soiree(String nom, Date dateHeure, Adresse adresse, Integer nbPlacesTotal, Utilisateur organisateur, String typeSoiree, Boolean estPayante, Boolean apportezBoissonsAperitifs) {
+    public Soiree(String nom, Date dateHeure, Adresse adresse, int nbPlacesTotal, Utilisateur organisateur, String typeSoiree, Boolean estPayante, Boolean apportezBoissonsAperitifs) {
         this();
         this.nom = nom;
         this.dateHeure = dateHeure;
@@ -113,9 +113,6 @@ public class Soiree {
     protected void onCreate() {
         if (datePublication == null) {
             datePublication = new Date();
-        }
-        if(nbPlacesRestantes == null) {
-            nbPlacesRestantes = 99999;
         }
     }
 

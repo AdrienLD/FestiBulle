@@ -47,7 +47,7 @@ public class UtilisateurController {
 
     @GetMapping("/profile")
     @Operation(summary = "Récupérer un utilisateur par son ID")
-    public ResponseEntity<UtilisateurDTO> getProfile( @RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<UtilisateurDTO> getProfile(@RequestHeader("Authorization") String authHeader) {
         String token = extractToken(authHeader);
         Integer id = getUserIdFromToken(token);
         return ResponseEntity.ok(utilisateurService.getUtilisateur(id));

@@ -2,8 +2,10 @@ package com.festi.bulle.service;
 
 import com.festi.bulle.dto.SoireeDTO;
 import com.festi.bulle.entity.Soiree;
+import com.festi.bulle.entity.Utilisateur;
 import com.festi.bulle.mapper.SoireeMapper;
 import com.festi.bulle.repository.SoireeRepository;
+import com.festi.bulle.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,11 +22,13 @@ public class SoireeService {
 
     private final SoireeRepository soireeRepository;
     private final SoireeMapper soireeMapper;
+    private final UtilisateurRepository utilisateurRepository;
 
     @Autowired
-    public SoireeService(SoireeRepository soireeRepository, SoireeMapper soireeMapper) {
+    public SoireeService(SoireeRepository soireeRepository, SoireeMapper soireeMapper, UtilisateurRepository utilisateurRepository) {
         this.soireeRepository = soireeRepository;
         this.soireeMapper = soireeMapper;
+        this.utilisateurRepository = utilisateurRepository;
     }
 
     @Transactional
@@ -48,12 +52,15 @@ public class SoireeService {
 
     @CacheEvict(value = "soirees", key = "#id")
     @Transactional
-    public SoireeDTO updateSoiree(Integer id, SoireeDTO soireeDTO) {
-        Soiree existingSoiree = soireeRepository.findById(id)
+    public SoireeDTO updateSoiree(Integer id, SoireeDTO soireeDTO, Integer userId) {
+        soireeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Soirée non trouvée"));
-        soireeMapper.updateSoireeFromDTO(soireeDTO, existingSoiree);
-        Soiree updatedSoiree = soireeRepository.save(existingSoiree);
-        return soireeMapper.toDTO(updatedSoiree);
+        Utilisateur organisateur = utilisateurRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+        Soiree soiree = soireeMapper.toEntity(soireeDTO);
+        soiree.setId(id);
+        soiree.setOrganisateur(organisateur);
+        return soireeMapper.toDTO(soireeRepository.save(soiree));
     }
 
     @CacheEvict(value = "soirees", key = "#id")

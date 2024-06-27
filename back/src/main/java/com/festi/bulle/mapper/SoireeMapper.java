@@ -21,16 +21,6 @@ public interface SoireeMapper {
     @Mapping(target = "soireeclassique", ignore = true)
     @Mapping(target = "soireejeuxsociete", ignore = true)
     @Mapping(target = "soireejeuxvideo", ignore = true)
+    @Mapping(target = "datePublication", ignore = true)
     Soiree toEntity(SoireeDTO soireeDTO);
-
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "adresse", ignore = true)
-    @Mapping(target = "organisateur", ignore = true)
-    @Mapping(target = "avis", ignore = true)
-    @Mapping(target = "conversations", ignore = true)
-    @Mapping(target = "participations", ignore = true)
-    @Mapping(target = "soireeclassique", ignore = true)
-    @Mapping(target = "soireejeuxsociete", ignore = true)
-    @Mapping(target = "soireejeuxvideo", ignore = true)
-    void updateSoireeFromDTO(SoireeDTO soireeDTO, @MappingTarget Soiree soiree);
 }

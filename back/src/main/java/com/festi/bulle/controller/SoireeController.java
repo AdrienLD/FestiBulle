@@ -81,7 +81,7 @@ public class SoireeController {
         if (!existingSoiree.getOrganisateurId().equals(userId)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-        SoireeDTO soireeModifiee = soireeService.updateSoiree(id, soireeDTO);
+        SoireeDTO soireeModifiee = soireeService.updateSoiree(id, soireeDTO, userId);
         return ResponseEntity.ok(soireeModifiee);
     }
 

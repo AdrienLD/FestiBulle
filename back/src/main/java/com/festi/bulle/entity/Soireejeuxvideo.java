@@ -31,7 +31,7 @@ public class Soireejeuxvideo {
     private String jeuxProposes;
 
     @Column(name = "nb_pc_disponibles")
-    private Integer nbPcDisponibles;
+    private int nbPcDisponibles;
 
     public Soireejeuxvideo() {
         this.jeuxProposes = "";
@@ -68,15 +68,11 @@ public class Soireejeuxvideo {
     }
 
     public void incrementNbPcDisponibles() {
-        if (this.nbPcDisponibles == null) {
-            this.nbPcDisponibles = 1;
-        } else {
-            this.nbPcDisponibles++;
-        }
+        this.nbPcDisponibles++;
     }
 
     public void decrementNbPcDisponibles() {
-        if (this.nbPcDisponibles != null && this.nbPcDisponibles > 0) {
+        if (this.nbPcDisponibles > 0) {
             this.nbPcDisponibles--;
         }
     }

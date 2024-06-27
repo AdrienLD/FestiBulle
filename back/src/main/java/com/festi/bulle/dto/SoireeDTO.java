@@ -12,8 +12,8 @@ public class SoireeDTO {
     private String description;
     private Date dateHeure;
     private Integer adresseId;
-    private Integer nbPlacesTotal;
-    private Integer nbPlacesRestantes;
+    private int nbPlacesTotal;
+    private int nbPlacesRestantes;
     private Boolean estPayante;
     private BigDecimal prix;
     private Date datePublication;

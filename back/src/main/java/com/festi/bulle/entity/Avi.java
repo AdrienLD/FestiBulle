@@ -22,7 +22,7 @@ public class Avi {
 
     @NotNull
     @Column(name = "note", nullable = false)
-    private Integer note;
+    private int note;
 
     @NotNull
     @Column(name = "date_creation", nullable = false)
