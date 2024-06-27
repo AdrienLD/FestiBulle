@@ -76,7 +76,8 @@ public class SoireeController {
             @RequestHeader("Authorization") String authHeader) {
         String token = extractToken(authHeader);
         Integer userId = getUserIdFromToken(token);
-        if (!soireeService.isOrganisateur(id, userId)) {
+        SoireeDTO existingSoiree = soireeService.getSoireeById(id);
+        if (!existingSoiree.getOrganisateurId().equals(userId)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         SoireeDTO soireeModifiee = soireeService.updateSoiree(id, soireeDTO);
@@ -90,7 +91,8 @@ public class SoireeController {
             @RequestHeader("Authorization") String authHeader) {
         String token = extractToken(authHeader);
         Integer userId = getUserIdFromToken(token);
-        if (!soireeService.isOrganisateur(id, userId)) {
+        SoireeDTO existingSoiree = soireeService.getSoireeById(id);
+        if (!existingSoiree.getOrganisateurId().equals(userId)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         soireeService.deleteSoiree(id);
@@ -99,9 +101,11 @@ public class SoireeController {
 
     @GetMapping("/{id}/participants")
     @Operation(summary = "Liste des participants à une soirée")
-    public ResponseEntity<List<String>> listerParticipants(
+    public ResponseEntity<List<Integer>> listerParticipants(
             @Parameter(description = "ID de la soirée") @PathVariable Integer id) {
-        List<String> participants = soireeService.getParticipants(id);
+        SoireeDTO soiree = soireeService.getSoireeById(id);
+        // Supposons que la SoireeDTO contient une liste d'IDs de participants
+        List<Integer> participants = soiree.getParticipantsIds();
         return ResponseEntity.ok(participants);
     }
 

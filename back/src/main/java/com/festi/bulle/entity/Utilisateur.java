@@ -52,7 +52,7 @@ public class Utilisateur {
 
     @Column(name = "centres_interets")
     private String centresInterets;
-()
+
     @Column(name = "note_moyenne")
     private Double noteMoyenne;
 
