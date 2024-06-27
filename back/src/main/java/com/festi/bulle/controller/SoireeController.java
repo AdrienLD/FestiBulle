@@ -101,12 +101,11 @@ public class SoireeController {
 
     @GetMapping("/{id}/participants")
     @Operation(summary = "Liste des participants à une soirée")
-    public ResponseEntity<List<Integer>> listerParticipants(
+    public ResponseEntity<Integer> nombreParticipants(
             @Parameter(description = "ID de la soirée") @PathVariable Integer id) {
         SoireeDTO soiree = soireeService.getSoireeById(id);
-        // Supposons que la SoireeDTO contient une liste d'IDs de participants
-        List<Integer> participants = soiree.getParticipantsIds();
-        return ResponseEntity.ok(participants);
+        int nombreParticipants = soiree.getNbPlacesTotal() - soiree.getNbPlacesRestantes();
+        return ResponseEntity.ok(nombreParticipants);
     }
 
     @GetMapping("/mes-soirees")
