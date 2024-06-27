@@ -27,7 +27,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         UtilisateurDTO utilisateur = utilisateurService.createUtilisateur(request);
-        String token = jwtService.generateToken(utilisateur.getEmail());
+        String token = jwtService.generateToken(utilisateur.getId().toString());
         Map<String, Object> response = new HashMap<>();
         response.put("utilisateur", utilisateur);
         response.put("token", token);

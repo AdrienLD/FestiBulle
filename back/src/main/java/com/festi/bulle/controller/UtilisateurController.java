@@ -36,17 +36,6 @@ public class UtilisateurController {
         return ResponseEntity.ok(utilisateurService.getAllUtilisateurs(pageable));
     }
 
-    @PostMapping("/register")
-    @Operation(summary = "Inscription d'un nouvel utilisateur")
-    public ResponseEntity<UtilisateurDTO> register(@RequestBody RegisterRequest registerRequest) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(utilisateurService.createUtilisateur(registerRequest));
-    }
-
-    @PostMapping("/login")
-    @Operation(summary = "Connexion d'un utilisateur")
-    public ResponseEntity<UtilisateurDTO> login(@RequestBody LoginRequest loginRequest) {
-        return ResponseEntity.ok(utilisateurService.loginUtilisateur(loginRequest));
-    }
 
     @PutMapping("/{id}")
     @Operation(summary = "Mise à jour du profil de l'utilisateur connecté")
