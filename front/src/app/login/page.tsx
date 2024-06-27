@@ -1,45 +1,44 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
-import React from 'react';
+import React from 'react'
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
-import { registerUser } from '../API';
+  CardTitle
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import { registerUser } from '../API'
 
 const LoginPage: React.FC = () => {
-    const [nom, setNom] = React.useState('');
-    const [mail, setMail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [isEighteenOrOlder, setIsEighteenOrOlder] = React.useState(false);
+  const [ nom, setNom ] = React.useState('')
+  const [ mail, setMail ] = React.useState('')
+  const [ password, setPassword ] = React.useState('')
+  const [ isEighteenOrOlder, setIsEighteenOrOlder ] = React.useState(false)
 
-    const inscription = async () => {
-        if (!isEighteenOrOlder) {
-            alert('Vous devez avoir plus de 18 ans pour vous inscrire');
-            return;
-        } else {
-            const register = await registerUser(nom, mail, password)
-            console.log(register)
+  const inscription = async () => {
+    if (!isEighteenOrOlder) {
+      alert('Vous devez avoir plus de 18 ans pour vous inscrire')
+      return
+    } else {
+      const register = await registerUser(nom, mail, password)
+      console.log(register)
 
-        }
+    }
         
-    }
+  }
 
-    const connection = async () => {
-        console.log('Connexion');
-        console.log('Nom:', nom);
-        console.log('Mail:', mail);
-        console.log('Password', password);
-        console.log('isEighteenOrOlder:', isEighteenOrOlder);
+  const connection = async () => {
+    console.log('Connexion')
+    console.log('Nom:', nom)
+    console.log('Mail:', mail)
+    console.log('Password', password)
+    console.log('isEighteenOrOlder:', isEighteenOrOlder)
 
-    }
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -62,7 +61,7 @@ const LoginPage: React.FC = () => {
         </CardFooter>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage
