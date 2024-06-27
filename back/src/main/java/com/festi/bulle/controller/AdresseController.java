@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/adresses")
 @Tag(name = "Adresse", description = "API de gestion des adresses")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdresseController {
 
     private final AdresseService adresseService;
