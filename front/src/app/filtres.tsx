@@ -30,7 +30,7 @@ const Filtres: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-wrap bg-card p-4 rounded-lg shadow-lg w-full">
+        <div className="flex flex-wrap bg-card p-4 rounded-lg shadow-lg w-[80%]">
             <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 justify-between w-full">
             <div>
                 <Label htmlFor="city">Ville</Label>
@@ -117,7 +117,7 @@ const Filtres: React.FC = () => {
                 <Checkbox id="terms" checked={freePaid} onCheckedChange={(checked: boolean) => setFreePaid(checked)}/>
             </div>
             <div className="flex h-full w-full items-center ">
-                <Button type="submit" className="w-full" onClick={(e) => { e.preventDefault(); filtrer(); }}>
+                <Button type="submit" className="w-full" variant="secondary"  onClick={(e) => { e.preventDefault(); filtrer(); }}>
                     Appliquer les filtres
                 </Button>
             </div>

@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import Filtres from "./filtres";
+import { Button } from "@/components/ui/button";
+import Soiree from "./soiree";
 
 export default function Home() {
   const router = useRouter();
@@ -16,6 +18,9 @@ export default function Home() {
   }, []);
 
   return (
+    <div className="flex">
     <Filtres />
+    <Soiree />
+    </div>
   );
 }

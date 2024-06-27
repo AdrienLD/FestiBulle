@@ -8,7 +8,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = AdresseMapper.class)
 public interface UtilisateurMapper {
 
-    @Mapping(target = "motDePasse", ignore = true)
     UtilisateurDTO toDTO(Utilisateur utilisateur);
 
     @Mapping(target = "avis", ignore = true)
