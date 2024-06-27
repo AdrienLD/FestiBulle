@@ -6,16 +6,14 @@ import com.festi.bulle.dto.UtilisateurDTO;
 import com.festi.bulle.service.UtilisateurService;
 import com.festi.bulle.service.JWTService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthenticationController {
 
     private final UtilisateurService utilisateurService;
