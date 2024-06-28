@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ isFilter, setIsFilter, token }) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
+      console.log(token)
       const user = await connectedUser(token)
       console.log(user)
     }

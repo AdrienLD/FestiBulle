@@ -80,3 +80,27 @@ export async function connectedUser(token: string) {
     console.error('Network error:', error)
   }
 }
+
+export async function getSoireesList() {
+  const url = 'http://localhost:8081/api/soirees'
+    
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    
+    if (response.ok) {
+      const data = await response.json()
+      console.log('Registration successful:', data)
+      return data
+    } else {
+      const errorData = await response.json()
+      console.error('Registration failed:', errorData)
+    }
+  } catch (error) {
+    console.error('Network error:', error)
+  }
+}
