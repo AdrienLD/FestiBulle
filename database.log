@@ -424,3 +424,141 @@
 1719575817147|41|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where c1_0.id=36
 1719575817213|30|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
 1719575817242|27|commit|
+1719584664055|85|statement|select * from information_schema.sequences
+1719584664573|33|statement|select * from "public"."soiree" where 1=0
+1719584664724|35|statement|select * from "public"."utilisateur" where 1=0
+1719584664873|37|statement|select * from "public"."utilisateur" where 1=0
+1719584665071|33|statement|select * from "public"."soiree" where 1=0
+1719584665269|36|statement|select * from "public"."conversation" where 1=0
+1719584665421|32|statement|select * from "public"."utilisateur" where 1=0
+1719584665625|36|statement|select * from "public"."soiree" where 1=0
+1719584665736|32|statement|select * from "public"."utilisateur" where 1=0
+1719584665935|34|statement|select * from "public"."adresse" where 1=0
+1719584666086|35|statement|select * from "public"."utilisateur" where 1=0
+1719584666283|32|statement|select * from "public"."soiree" where 1=0
+1719584666494|32|statement|select * from "public"."soiree" where 1=0
+1719584666690|32|statement|select * from "public"."soiree" where 1=0
+1719584666886|32|statement|select * from "public"."adresse" where 1=0
+1719584667080|32|statement|select * from "public"."conversation" where 1=0
+1719584667197|34|statement|select * from "public"."utilisateur" where 1=0
+1719584674424|45|statement|select distinct c1_0.id,c1_0.date_creation,c1_0.est_groupe,m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id,u2_0.id,u2_0.adresse_id,u2_0.centres_interets,u2_0.date_naissance,u2_0.email,u2_0.mot_de_passe,u2_0.nom,u2_0.note_moyenne,u2_0.prenom,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id left join message m1_0 on c1_0.id=m1_0.conversation_id left join utilisateur u2_0 on u2_0.id=m1_0.utilisateur_id where c1_0.id=36
+1719584674497|32|commit|
+1719584691281|33|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.id=36
+1719584691316|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584691365|35|statement|select nextval('message_id_seq')
+1719584691457|37|statement|insert into message (contenu,conversation_id,date_envoi,utilisateur_id,id) values ('"Ceci est un message de test 2"',36,'2024-06-28T16:24:51.318+0200',35,2)
+1719584691494|33|commit|
+1719584695907|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584695943|32|statement|select nextval('conversation_id_seq')
+1719584695980|33|statement|insert into conversation (date_creation,est_groupe,soiree_id,id) values ('2024-06-28T16:24:55.909+0200',false,NULL,37)
+1719584696022|35|statement|insert into utilisateur_conversation (conversation_id,utilisateur_id) values (37,35)
+1719584696056|33|commit|
+1719584711329|33|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584711379|33|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719584711422|36|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
+1719584711459|34|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719584711493|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=37
+1719584711531|36|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=37
+1719584711562|31|commit|
+1719584736299|32|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.soiree_id=1 and c1_0.est_groupe=true
+1719584736334|33|rollback|
+1719584740710|32|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.soiree_id=32 and c1_0.est_groupe=true
+1719584740747|34|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=32
+1719584740781|32|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=32
+1719584740814|31|commit|
+1719584755920|33|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.id=32
+1719584755952|31|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584755986|32|statement|select nextval('message_id_seq')
+1719584756024|34|statement|insert into message (contenu,conversation_id,date_envoi,utilisateur_id,id) values ('"Ceci est un message de test 2"',32,'2024-06-28T16:25:55.954+0200',35,3)
+1719584756061|36|commit|
+1719584760508|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584760543|32|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719584760577|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
+1719584760611|32|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719584760644|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=37
+1719584760679|33|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=37
+1719584760712|31|commit|
+1719584772128|33|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584772163|33|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719584772197|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
+1719584772233|32|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719584772266|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=37
+1719584772299|31|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=37
+1719584772332|31|commit|
+1719584807137|33|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719584807176|35|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719584807211|32|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
+1719584807246|32|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719584807280|33|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=37
+1719584807314|33|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=37
+1719584807347|32|commit|
+1719585604018|94|statement|select * from information_schema.sequences
+1719585604485|32|statement|select * from "public"."soiree" where 1=0
+1719585604629|32|statement|select * from "public"."utilisateur" where 1=0
+1719585604764|29|statement|select * from "public"."utilisateur" where 1=0
+1719585604950|27|statement|select * from "public"."soiree" where 1=0
+1719585605136|30|statement|select * from "public"."conversation" where 1=0
+1719585605268|28|statement|select * from "public"."utilisateur" where 1=0
+1719585605452|28|statement|select * from "public"."soiree" where 1=0
+1719585605555|28|statement|select * from "public"."utilisateur" where 1=0
+1719585605741|30|statement|select * from "public"."adresse" where 1=0
+1719585605876|28|statement|select * from "public"."utilisateur" where 1=0
+1719585606071|28|statement|select * from "public"."soiree" where 1=0
+1719585606257|28|statement|select * from "public"."soiree" where 1=0
+1719585606444|27|statement|select * from "public"."soiree" where 1=0
+1719585606631|28|statement|select * from "public"."adresse" where 1=0
+1719585606815|28|statement|select * from "public"."conversation" where 1=0
+1719585606915|28|statement|select * from "public"."utilisateur" where 1=0
+1719585633974|36|statement|select * from information_schema.sequences
+1719585634373|29|statement|select * from "public"."soiree" where 1=0
+1719585634509|28|statement|select * from "public"."utilisateur" where 1=0
+1719585634644|28|statement|select * from "public"."utilisateur" where 1=0
+1719585634828|28|statement|select * from "public"."soiree" where 1=0
+1719585635013|28|statement|select * from "public"."conversation" where 1=0
+1719585635144|28|statement|select * from "public"."utilisateur" where 1=0
+1719585635329|29|statement|select * from "public"."soiree" where 1=0
+1719585635432|29|statement|select * from "public"."utilisateur" where 1=0
+1719585635616|29|statement|select * from "public"."adresse" where 1=0
+1719585635752|29|statement|select * from "public"."utilisateur" where 1=0
+1719585635935|29|statement|select * from "public"."soiree" where 1=0
+1719585636121|29|statement|select * from "public"."soiree" where 1=0
+1719585636305|30|statement|select * from "public"."soiree" where 1=0
+1719585636492|28|statement|select * from "public"."adresse" where 1=0
+1719585636680|29|statement|select * from "public"."conversation" where 1=0
+1719585636784|28|statement|select * from "public"."utilisateur" where 1=0
+1719585683775|35|statement|select * from information_schema.sequences
+1719585684160|27|statement|select * from "public"."soiree" where 1=0
+1719585684303|30|statement|select * from "public"."utilisateur" where 1=0
+1719585684437|28|statement|select * from "public"."utilisateur" where 1=0
+1719585684621|29|statement|select * from "public"."soiree" where 1=0
+1719585684809|29|statement|select * from "public"."conversation" where 1=0
+1719585684945|28|statement|select * from "public"."utilisateur" where 1=0
+1719585685130|29|statement|select * from "public"."soiree" where 1=0
+1719585685232|28|statement|select * from "public"."utilisateur" where 1=0
+1719585685417|28|statement|select * from "public"."adresse" where 1=0
+1719585685554|30|statement|select * from "public"."utilisateur" where 1=0
+1719585685738|29|statement|select * from "public"."soiree" where 1=0
+1719585685921|29|statement|select * from "public"."soiree" where 1=0
+1719585686110|29|statement|select * from "public"."soiree" where 1=0
+1719585686296|32|statement|select * from "public"."adresse" where 1=0
+1719585686480|29|statement|select * from "public"."conversation" where 1=0
+1719585686596|28|statement|select * from "public"."utilisateur" where 1=0
+1719585756991|36|statement|select * from information_schema.sequences
+1719585757387|28|statement|select * from "public"."soiree" where 1=0
+1719585757524|29|statement|select * from "public"."utilisateur" where 1=0
+1719585757671|35|statement|select * from "public"."utilisateur" where 1=0
+1719585757864|29|statement|select * from "public"."soiree" where 1=0
+1719585758051|31|statement|select * from "public"."conversation" where 1=0
+1719585758191|31|statement|select * from "public"."utilisateur" where 1=0
+1719585758381|30|statement|select * from "public"."soiree" where 1=0
+1719585758490|29|statement|select * from "public"."utilisateur" where 1=0
+1719585758675|30|statement|select * from "public"."adresse" where 1=0
+1719585758813|29|statement|select * from "public"."utilisateur" where 1=0
+1719585758996|29|statement|select * from "public"."soiree" where 1=0
+1719585759180|29|statement|select * from "public"."soiree" where 1=0
+1719585759374|34|statement|select * from "public"."soiree" where 1=0
+1719585759560|29|statement|select * from "public"."adresse" where 1=0
+1719585759744|29|statement|select * from "public"."conversation" where 1=0
+1719585759899|79|statement|select * from "public"."utilisateur" where 1=0
+1719585843826|64|statement|select distinct c1_0.id,c1_0.date_creation,c1_0.est_groupe,m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id,u2_0.id,u2_0.adresse_id,u2_0.centres_interets,u2_0.date_naissance,u2_0.email,u2_0.mot_de_passe,u2_0.nom,u2_0.note_moyenne,u2_0.prenom,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id left join message m1_0 on c1_0.id=m1_0.conversation_id left join utilisateur u2_0 on u2_0.id=m1_0.utilisateur_id where c1_0.id=36
+1719585843912|35|commit|

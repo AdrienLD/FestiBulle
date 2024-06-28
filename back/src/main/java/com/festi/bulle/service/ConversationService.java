@@ -45,8 +45,13 @@ public class ConversationService {
     @Cacheable(value = "conversations", key = "#id")
     @Transactional(readOnly = true)
     public ConversationDTO getConversationById(Integer id) {
-        Conversation conversation = conversationRepository.findByIdWithUtilisateurs(id)
+        Conversation conversation = conversationRepository.findByIdWithUtilisateursAndMessages(id)
                 .orElseThrow(() -> new RuntimeException("Conversation non trouvée"));
+
+        // Assurez-vous que les utilisateurs et les messages sont chargés
+        conversation.getUtilisateurs().size(); // Force le chargement des utilisateurs
+        conversation.getMessages().forEach(message -> message.getUtilisateur().getNom()); // Force le chargement des noms d'utilisateurs pour les messages
+
         return conversationMapper.toDTO(conversation);
     }
 
