@@ -128,11 +128,6 @@ public class Soiree {
         this.nbPlacesRestantes++;
     }
 
-    public void addAvis(Avi avis) {
-        this.avis.add(avis);
-        avis.setSoiree(this);
-    }
-
     public void removeAvis(Avi avis) {
         this.avis.remove(avis);
         avis.setSoiree(null);

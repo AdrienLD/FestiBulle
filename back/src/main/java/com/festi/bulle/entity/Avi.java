@@ -33,24 +33,28 @@ public class Avi {
     @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur utilisateur;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "soiree_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "soiree_id")
     private Soiree soiree;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "to_user_id")
+    private Utilisateur toUserId;
 
     public Avi() {
         this.dateCreation = Instant.now();
     }
 
-    public Avi(Integer note, Utilisateur utilisateur, Soiree soiree) {
+    public Avi(Integer note, Utilisateur utilisateur, Soiree soiree, Utilisateur toUserId) {
         this();
         this.note = note;
         this.utilisateur = utilisateur;
         this.soiree = soiree;
+        this.toUserId = toUserId;
     }
 
-    public Avi(String commentaire, Integer note, Utilisateur utilisateur, Soiree soiree) {
-        this(note, utilisateur, soiree);
+    public Avi(String commentaire, Integer note, Utilisateur utilisateur, Soiree soiree, Utilisateur toUserId) {
+        this(note, utilisateur, soiree, toUserId);
         this.commentaire = commentaire;
     }
 }
