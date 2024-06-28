@@ -9,7 +9,7 @@ import com.festi.bulle.repository.UtilisateurRepository;
 import com.festi.bulle.utils.Functions;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,12 +31,17 @@ public class UtilisateurService {
     }
 
     @Transactional(readOnly = true)
+    @Cacheable(value = "allUtilisateurs", key = "#pageable.pageNumber + '_' + #pageable.pageSize")
     public Page<UtilisateurDTO> getAllUtilisateurs(Pageable pageable) {
         return utilisateurRepository.findAll(pageable)
                 .map(utilisateurMapper::toDTO);
     }
 
     @Transactional
+    @Caching(
+            put = @CachePut(value = "utilisateurs", key = "#result.id"),
+            evict = @CacheEvict(value = "allUtilisateurs", allEntries = true)
+    )
     public UtilisateurDTO createUtilisateur(RegisterRequest registerRequest) {
         if (utilisateurRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
             throw new RuntimeException("Email déjà utilisé");
@@ -59,7 +64,7 @@ public class UtilisateurService {
         return utilisateurMapper.toDTO(utilisateur);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public UtilisateurDTO loginUtilisateur(LoginRequest loginRequest) {
         Utilisateur utilisateur = utilisateurRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new RuntimeException("Email ou mot de passe incorrect"));
@@ -72,6 +77,10 @@ public class UtilisateurService {
     }
 
     @Transactional
+    @Caching(
+            put = @CachePut(value = "utilisateurs", key = "#id"),
+            evict = @CacheEvict(value = "allUtilisateurs", allEntries = true)
+    )
     public UtilisateurDTO updateUtilisateur(Integer id, UtilisateurDTO utilisateurDTO) {
         utilisateurRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
@@ -82,13 +91,11 @@ public class UtilisateurService {
     }
 
     @Transactional
+    @Caching(evict = {
+            @CacheEvict(value = "utilisateurs", key = "#id"),
+            @CacheEvict(value = "allUtilisateurs", allEntries = true)
+    })
     public void deleteUtilisateur(Integer id) {
         utilisateurRepository.deleteById(id);
     }
-
-   /* @Transactional(readOnly = true)
-    public Page<AvisDTO> getAvisUtilisateur(Integer id, Pageable pageable) {
-        return avisRepository.findByUtilisateurId(id, pageable)
-                .map(avisMapper::toDTO);
-    } */
 }

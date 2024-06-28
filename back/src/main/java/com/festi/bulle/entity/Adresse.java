@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "adresse")
+@Table(name = "adresse", indexes = @Index(name = "idx_ville", columnList = "ville"))
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adresse_id_gen")

@@ -10,7 +10,7 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "participation")
+@Table(name = "participation", indexes = @Index(name = "idx_soiree", columnList = "soiree_id"))
 public class Participation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "participation_id_gen")

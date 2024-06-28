@@ -9,7 +9,7 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "avis")
+@Table(name = "avis", indexes = @Index(name = "idx-user", columnList = "utilisateur_id"))
 public class Avi {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "avis_id_gen")

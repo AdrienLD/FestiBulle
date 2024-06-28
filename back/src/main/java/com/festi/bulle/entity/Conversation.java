@@ -3,6 +3,7 @@ package com.festi.bulle.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;
@@ -35,12 +36,14 @@ public class Conversation {
     private Boolean estGroupe;
 
     @OneToMany(mappedBy = "conversation")
+    @BatchSize(size = 50)
     private Set<Message> messages;
 
     @ManyToMany
     @JoinTable(name = "utilisateur_conversation",
             joinColumns = @JoinColumn(name = "conversation_id"),
             inverseJoinColumns = @JoinColumn(name = "utilisateur_id"))
+    @BatchSize(size = 10)
     private Set<Utilisateur> utilisateurs;
 
     public Conversation() {

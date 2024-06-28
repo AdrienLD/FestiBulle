@@ -54,6 +54,4 @@ public class AdresseService {
                 .map(adresseMapper::toDTO)
                 .collect(Collectors.toList());
     }
-
-    // Autres méthodes CRUD...
 }

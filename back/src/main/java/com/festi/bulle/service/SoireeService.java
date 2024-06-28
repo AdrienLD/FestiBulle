@@ -8,18 +8,11 @@ import com.festi.bulle.mapper.SoireeMapper;
 import com.festi.bulle.repository.SoireeRepository;
 import com.festi.bulle.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Page;
+import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +31,13 @@ public class SoireeService {
         this.utilisateurRepository = utilisateurRepository;
     }
 
+    @Caching(
+            put = @CachePut(value = "soirees", key = "#result.id"),
+            evict = {
+                    @CacheEvict(value = "rechercheSoirees", allEntries = true),
+                    @CacheEvict(value = "allSoirees", allEntries = true)
+            }
+    )
     @Transactional
     public SoireeDTO createSoiree(SoireeDTO soireeDTO) {
         Soiree soiree = soireeMapper.toEntity(soireeDTO);
@@ -52,12 +52,19 @@ public class SoireeService {
         return soireeMapper.toDTO(soiree);
     }
 
+    @Cacheable(value = "allSoirees", key = "#pageable.pageNumber + '_' + #pageable.pageSize")
     @Transactional(readOnly = true)
     public List<SoireeDTO> getAllSoirees(Pageable pageable) {
         return soireeRepository.findAll(pageable).stream().map(soireeMapper::toDTO).toList();
     }
 
-    @CacheEvict(value = "soirees", key = "#id")
+    @Caching(
+            put = @CachePut(value = "soirees", key = "#id"),
+            evict = {
+                    @CacheEvict(value = "rechercheSoirees", allEntries = true),
+                    @CacheEvict(value = "allSoirees", allEntries = true)
+            }
+    )
     @Transactional
     public SoireeDTO updateSoiree(Integer id, SoireeDTO soireeDTO, Integer userId) {
         soireeRepository.findById(id)
@@ -70,7 +77,11 @@ public class SoireeService {
         return soireeMapper.toDTO(soireeRepository.save(soiree));
     }
 
-    @CacheEvict(value = "soirees", key = "#id")
+    @Caching(evict = {
+            @CacheEvict(value = "soirees", key = "#id"),
+            @CacheEvict(value = "rechercheSoirees", allEntries = true),
+            @CacheEvict(value = "allSoirees", allEntries = true)
+    })
     @Transactional
     public void deleteSoiree(Integer id) {
         soireeRepository.deleteById(id);
@@ -92,6 +103,7 @@ public class SoireeService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "rechercheSoirees", key = "{#rechercheDTO.adresseId, #rechercheDTO.typeSoiree, #rechercheDTO.estPayante}")
     @Transactional(readOnly = true)
     public List<SoireeDTO> rechercherSoirees(RechercheDTO rechercheDTO) {
         Date currentDate = new Date();

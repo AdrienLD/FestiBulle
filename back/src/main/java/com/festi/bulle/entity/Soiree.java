@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,7 +14,12 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "soiree")
+@Table(name = "soiree", indexes = {
+        @Index(name = "idx_soiree_date_heure", columnList = "date_heure"),
+        @Index(name = "idx_soiree_type", columnList = "type_soiree"),
+        @Index(name = "idx_soiree_organisateur", columnList = "organisateur_id"),
+        @Index(name = "idx_soiree_date_publication", columnList = "date_publication")
+})
 public class Soiree {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "soiree_id_gen")
@@ -78,6 +84,7 @@ public class Soiree {
     private Set<Conversation> conversations;
 
     @OneToMany(mappedBy = "soiree")
+    @BatchSize(size = 20)
     private Set<Participation> participations;
 
     @OneToOne(mappedBy = "soiree")

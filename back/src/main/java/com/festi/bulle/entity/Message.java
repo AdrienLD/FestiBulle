@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString(exclude = {"utilisateur", "conversation"})
 @Entity
-@Table(name = "message")
+@Table(name = "message", indexes = @Index(name = "idx-conversation", columnList = "conversation_id"))
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_id_gen")

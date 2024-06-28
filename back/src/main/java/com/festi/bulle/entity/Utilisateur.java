@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
@@ -15,7 +16,7 @@ import java.util.Set;
 @ToString(exclude = {"adresse", "avis", "messages", "participations", "soirees", "conversations"})
 @AllArgsConstructor
 @Entity
-@Table(name = "utilisateur")
+@Table(name = "utilisateur", indexes = @Index(name = "idx_utilisateur_nom_prenom", columnList = "nom, prenom"))
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "utilisateur_id_gen")
@@ -59,18 +60,23 @@ public class Utilisateur {
     private Double noteMoyenne;
 
     @OneToMany(mappedBy = "utilisateur")
+    @BatchSize(size = 10)
     private Set<Avi> avis;
 
     @OneToMany(mappedBy = "utilisateur")
+    @BatchSize(size = 50)
     private Set<Message> messages;
 
     @OneToMany(mappedBy = "utilisateur")
+    @BatchSize(size = 10)
     private Set<Participation> participations;
 
     @OneToMany(mappedBy = "organisateur")
+    @BatchSize(size = 10)
     private Set<Soiree> soirees;
 
     @ManyToMany(mappedBy = "utilisateurs")
+    @BatchSize(size = 10)
     private Set<Conversation> conversations;
 
     public Utilisateur() {
