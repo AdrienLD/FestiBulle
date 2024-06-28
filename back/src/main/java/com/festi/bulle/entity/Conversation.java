@@ -6,9 +6,12 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"soiree", "messages", "utilisateurs"})
 @AllArgsConstructor
 @Entity
 @Table(name = "conversation")
@@ -65,5 +68,18 @@ public class Conversation {
     public void removeUtilisateur(Utilisateur utilisateur) {
         this.utilisateurs.remove(utilisateur);
         utilisateur.getConversations().remove(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Conversation)) return false;
+        Conversation that = (Conversation) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
