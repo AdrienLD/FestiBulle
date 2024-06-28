@@ -6,6 +6,7 @@ import com.festi.bulle.dto.UtilisateurDTO;
 import com.festi.bulle.entity.Utilisateur;
 import com.festi.bulle.mapper.UtilisateurMapper;
 import com.festi.bulle.repository.UtilisateurRepository;
+import com.festi.bulle.utils.Functions;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.cache.annotation.Cacheable;
@@ -39,6 +40,14 @@ public class UtilisateurService {
     public UtilisateurDTO createUtilisateur(RegisterRequest registerRequest) {
         if (utilisateurRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
             throw new RuntimeException("Email déjà utilisé");
+        }
+
+        if (!Functions.isValidEmail(registerRequest.getEmail())){
+            throw new RuntimeException("Email invalide");
+        }
+
+        if (!Functions.isPassWordValid(registerRequest.getMotDePasse())){
+            throw new RuntimeException("La mot de passe doit faire au moins 6 caractères");
         }
 
         String email = registerRequest.getEmail();

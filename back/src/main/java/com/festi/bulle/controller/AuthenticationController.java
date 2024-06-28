@@ -5,6 +5,7 @@ import com.festi.bulle.dto.RegisterRequest;
 import com.festi.bulle.dto.UtilisateurDTO;
 import com.festi.bulle.service.UtilisateurService;
 import com.festi.bulle.service.JWTService;
+import com.festi.bulle.utils.Errors;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,21 +27,29 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-        UtilisateurDTO utilisateur = utilisateurService.createUtilisateur(request);
-        String token = jwtService.generateToken(utilisateur.getId().toString());
-        Map<String, Object> response = new HashMap<>();
-        response.put("utilisateur", utilisateur);
-        response.put("token", token);
-        return ResponseEntity.ok(response);
+        try {
+            UtilisateurDTO utilisateur = utilisateurService.createUtilisateur(request);
+            String token = jwtService.generateToken(utilisateur.getId().toString());
+            Map<String, Object> response = new HashMap<>();
+            response.put("utilisateur", utilisateur);
+            response.put("token", token);
+            return ResponseEntity.ok(response);
+        } catch (Exception e){
+            return Errors.badRequest(e);
+        }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        UtilisateurDTO utilisateur = utilisateurService.loginUtilisateur(request);
-        String token = jwtService.generateToken(utilisateur.getId().toString());
-        Map<String, Object> response = new HashMap<>();
-        response.put("utilisateur", utilisateur);
-        response.put("token", token);
-        return ResponseEntity.ok(response);
+        try{
+            UtilisateurDTO utilisateur = utilisateurService.loginUtilisateur(request);
+            String token = jwtService.generateToken(utilisateur.getId().toString());
+            Map<String, Object> response = new HashMap<>();
+            response.put("utilisateur", utilisateur);
+            response.put("token", token);
+            return ResponseEntity.ok(response);
+        } catch (Exception e){
+            return Errors.badRequest(e);
+        }
     }
 }
