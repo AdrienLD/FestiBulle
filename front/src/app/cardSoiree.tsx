@@ -2,6 +2,13 @@ import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { CiCalendar } from 'react-icons/ci'
 import { IoTicketOutline } from 'react-icons/io5'
+import { MdOutlinePlace } from 'react-icons/md'
+import { MdOutlineEventSeat } from 'react-icons/md'
+import { PiBeerBottleFill } from 'react-icons/pi'
+import { MdEuro } from 'react-icons/md'
+import { IoMdInformationCircleOutline } from 'react-icons/io'
+import Soiree from './soiree'
+import { getAdresse, getUser } from './API'
 
 export interface CardSoireeInterface {
   adresseId: number
@@ -24,44 +31,64 @@ interface Soiree {
 }
 
 const CardSoiree: React.FC<Soiree> = ({ soiree }) => {
+  const [ formattedDate, setFormattedDate ] = React.useState('')
+  const [ adresse, setAdresse ] = React.useState('')
+
+  React.useEffect(() => {
+    const fetchAdresse = async () => {
+      const adresse = await getAdresse(soiree.adresseId)
+      setAdresse(adresse.ville)
+      const user = await getUser(soiree.organisateurId)
+      console.log(user)
+    }
+    fetchAdresse()
+  }, [])
+
+  React.useEffect(() => {
+    const date = new Date(soiree.dateHeure)
+    setFormattedDate(date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    }))
+  }, [ soiree.dateHeure ])
+
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md ">
       <CardHeader>
-        <CardTitle>Soirée Dansante</CardTitle>
+        <CardTitle>{soiree.nom}</CardTitle>
         <CardDescription>
+          {soiree.typeSoiree}
           <div className="flex items-center gap-2">
             <CiCalendar className="w-4 h-4 text-muted-foreground" />
-            <span>Vendredi 30 juin 2023</span>
-            <span>20h - 2h</span>
+            <span>{formattedDate}</span>
           </div>
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-            <span>Payant</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-            <span>20 places restantes</span>
+            <MdOutlineEventSeat className="w-4 h-4 text-muted-foreground" />
+            <span>{soiree.nbPlacesRestantes} places restantes</span>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-          <span>123 Rue des Fêtes, 75000 Paris</span>
+          <MdOutlinePlace className="w-4 h-4 text-muted-foreground" />
+          <span>{adresse}</span>
         </div>
         <div className="flex items-center gap-2">
-          <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-          <span>Soirée dansante</span>
+          <PiBeerBottleFill className="w-4 h-4 text-muted-foreground" />
+          <span>{soiree.apportezBoissonsAperitifs ? "Besoin d'apporter" : "Pas besoin d'apporter"}</span>
         </div>
         <div className="flex items-center gap-2">
-          <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-          <span>Musique électronique</span>
+          <MdEuro className="w-4 h-4 text-muted-foreground" />
+          <span>{soiree.prix === null ? 'Gratuit' : soiree.prix + '€'}</span>
         </div>
         <div className="flex items-center gap-2">
-          <IoTicketOutline className="w-4 h-4 text-muted-foreground" />
-          <span>Entrée 10€</span>
+          <IoMdInformationCircleOutline className="w-4 h-4 text-muted-foreground" />
+          <span>{soiree.description}</span>
         </div>
       </CardContent>
     </Card>

@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ isFilter, setIsFilter, token }) => {
     if (token) {
       fetchData()
     }
-  }, [token])
+  }, [ token ])
 
   return (
     <div className='w-full flex  bg-card p-4 rounded-lg shadow-lg w-full'>
