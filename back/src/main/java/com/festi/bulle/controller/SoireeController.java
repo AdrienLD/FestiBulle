@@ -1,5 +1,6 @@
 package com.festi.bulle.controller;
 
+import com.festi.bulle.dto.RechercheDTO;
 import com.festi.bulle.dto.SoireeDTO;
 import com.festi.bulle.service.SoireeService;
 import com.festi.bulle.service.JWTService;
@@ -8,12 +9,15 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -125,5 +129,14 @@ public class SoireeController {
         Integer participantId = getUserIdFromToken(token);
         List<SoireeDTO> mesParticipations = soireeService.getSoireesParticipees(participantId);
         return ResponseEntity.ok(mesParticipations);
+    }
+
+    @PostMapping("/recherche")
+    public ResponseEntity<List<SoireeDTO>> rechercherSoirees(@RequestBody(required = false) RechercheDTO rechercheDTO) {
+        if (rechercheDTO == null) {
+            rechercheDTO = new RechercheDTO();
+        }
+        List<SoireeDTO> soirees = soireeService.rechercherSoirees(rechercheDTO);
+        return ResponseEntity.ok(soirees);
     }
 }

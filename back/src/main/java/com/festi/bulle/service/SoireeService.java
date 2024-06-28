@@ -1,5 +1,6 @@
 package com.festi.bulle.service;
 
+import com.festi.bulle.dto.RechercheDTO;
 import com.festi.bulle.dto.SoireeDTO;
 import com.festi.bulle.entity.Soiree;
 import com.festi.bulle.entity.Utilisateur;
@@ -14,6 +15,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -83,5 +90,20 @@ public class SoireeService {
                 .stream()
                 .map(soireeMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<SoireeDTO> rechercherSoirees(RechercheDTO rechercheDTO) {
+        Date currentDate = new Date();
+
+        List<Soiree> soirees = soireeRepository.rechercherSoirees(
+                rechercheDTO.getAdresseId(),
+                rechercheDTO.getTypeSoiree(),
+                rechercheDTO.getNom(),
+                rechercheDTO.getNbPersonnes(),
+                rechercheDTO.getEstPayante(),
+                currentDate
+        );
+        return soirees.stream().map(soireeMapper::toDTO).collect(Collectors.toList());
     }
 }
