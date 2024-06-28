@@ -109,7 +109,7 @@ public class SoireeService {
         Date currentDate = new Date();
 
         List<Soiree> soirees = soireeRepository.rechercherSoirees(
-                rechercheDTO.getVille(),
+                rechercheDTO.getAdresseId(),
                 rechercheDTO.getTypeSoiree(),
                 rechercheDTO.getNom(),
                 rechercheDTO.getNbPersonnes(),

@@ -23,14 +23,14 @@ public interface SoireeRepository extends JpaRepository<Soiree, Integer> {
     Soiree findByIdWithDetails(@Param("id") Integer id);
 
     @Query("SELECT s FROM Soiree s WHERE " +
-            "(:ville IS NULL OR s.adresse.ville = :ville) AND " +
+            "(:adresseId IS NULL OR s.adresse.id = :adresseId) AND " +
             "(:typeSoiree IS NULL OR s.typeSoiree = :typeSoiree) AND " +
             "(:nbPersonnes IS NULL OR :nbPersonnes >= s.nbPlacesRestantes) AND " +
             "(:nom IS NULL OR s.nom >= :nom) AND " +
             "(:estPayante IS NULL OR s.estPayante = :estPayante) AND " +
             "s.dateHeure > :currentDate")
     List<Soiree> rechercherSoirees(
-            @Param("ville") String ville,
+            @Param("adresseId") Integer adresseId,
             @Param("typeSoiree") String typeSoiree,
             @Param("nom") String nom,
             @Param("nbPersonnes") Integer nbPersonnes,
