@@ -31,9 +31,9 @@ const Filtres = ({setFiltre}: { setFiltre: (filtre: Filtre) => void }) => {
 
     const filtre: Filtre = {
         typeSoiree: type !== 'TOUS' ? type : '',
-        //nom: name,
-        //nbPersonnes: people,
-        //estPayante: freePaid ? true : null,
+        nom: name,
+        nbPersonnes: people,
+        estPayante: freePaid ? true : null,
     }
     setFiltre(filtre)
   }
