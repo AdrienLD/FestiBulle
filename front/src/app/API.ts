@@ -59,11 +59,12 @@ export async function connectedUser(token: string) {
   const url = 'http://localhost:8081/api/v1/utilisateurs/profile'
   
   try {
+    console.log("token", token)
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        Authorization: `Bearer ${token}`
       }
     })
   

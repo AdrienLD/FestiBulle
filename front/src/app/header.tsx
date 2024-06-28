@@ -16,8 +16,10 @@ const Header: React.FC<HeaderProps> = ({ isFilter, setIsFilter, token }) => {
       const user = await connectedUser(token)
       console.log(user)
     }
-    fetchData()
-  }, [])
+    if (token) {
+      fetchData()
+    }
+  }, [token])
 
   return (
     <div className='w-full flex  bg-card p-4 rounded-lg shadow-lg w-full'>

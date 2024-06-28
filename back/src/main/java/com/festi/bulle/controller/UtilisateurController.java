@@ -1,7 +1,5 @@
 package com.festi.bulle.controller;
 
-import com.festi.bulle.dto.LoginRequest;
-import com.festi.bulle.dto.RegisterRequest;
 import com.festi.bulle.dto.UtilisateurDTO;
 import com.festi.bulle.service.JWTService;
 import com.festi.bulle.service.UtilisateurService;
@@ -9,7 +7,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
