@@ -2,12 +2,16 @@ package com.festi.bulle.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.Instant;
+import java.util.Objects;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString(exclude = {"utilisateur", "conversation"})
 @Entity
 @Table(name = "message")
 public class Message {
@@ -52,5 +56,18 @@ public class Message {
 
     public void removeFromConversation() {
         this.conversation.getMessages().remove(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Message)) return false;
+        Message message = (Message) o;
+        return Objects.equals(getId(), message.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

@@ -1,0 +1,426 @@
+1719563051103|21|statement|select * from information_schema.sequences
+1719563051428|18|statement|select * from "public"."soiree" where 1=0
+1719563051532|17|statement|select * from "public"."utilisateur" where 1=0
+1719563051703|17|statement|select * from "public"."soiree" where 1=0
+1719563051851|17|statement|select * from "public"."conversation" where 1=0
+1719563051955|17|statement|select * from "public"."utilisateur" where 1=0
+1719563052107|17|statement|select * from "public"."soiree" where 1=0
+1719563052191|17|statement|select * from "public"."utilisateur" where 1=0
+1719563052350|18|statement|select * from "public"."adresse" where 1=0
+1719563052474|29|statement|select * from "public"."utilisateur" where 1=0
+1719563052629|22|statement|select * from "public"."soiree" where 1=0
+1719563052785|17|statement|select * from "public"."soiree" where 1=0
+1719563052934|16|statement|select * from "public"."soiree" where 1=0
+1719563053084|17|statement|select * from "public"."adresse" where 1=0
+1719563053239|18|statement|select * from "public"."conversation" where 1=0
+1719563053319|17|statement|select * from "public"."utilisateur" where 1=0
+1719564137562|21|statement|select * from information_schema.sequences
+1719564137886|17|statement|select * from "public"."soiree" where 1=0
+1719564137993|17|statement|select * from "public"."utilisateur" where 1=0
+1719564138161|18|statement|select * from "public"."soiree" where 1=0
+1719564138319|19|statement|select * from "public"."conversation" where 1=0
+1719564138420|17|statement|select * from "public"."utilisateur" where 1=0
+1719564138576|17|statement|select * from "public"."soiree" where 1=0
+1719564138656|17|statement|select * from "public"."utilisateur" where 1=0
+1719564138806|18|statement|select * from "public"."adresse" where 1=0
+1719564138909|17|statement|select * from "public"."utilisateur" where 1=0
+1719564139057|17|statement|select * from "public"."soiree" where 1=0
+1719564139205|18|statement|select * from "public"."soiree" where 1=0
+1719564139361|18|statement|select * from "public"."soiree" where 1=0
+1719564139508|17|statement|select * from "public"."adresse" where 1=0
+1719564139661|21|statement|select * from "public"."conversation" where 1=0
+1719564139740|16|statement|select * from "public"."utilisateur" where 1=0
+1719564245340|76|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.email='jean.dupont@example.com'
+1719564245463|19|statement|select nextval('utilisateur_id_seq')
+1719564245494|17|statement|select nextval('adresse_id_seq')
+1719564245558|20|statement|insert into adresse (code_postal,libelle,nom_lieu,region,ville,id) values ('','','','','',31)
+1719564245584|21|statement|insert into utilisateur (adresse_id,centres_interets,date_naissance,email,mot_de_passe,nom,note_moyenne,prenom,id) values (31,'','2006-06-28T00:00:00.000+0200','jean.dupont@example.com','$2a$10$3Sph1ZTGFVMZWrKKVZ7O.OMfHTYvOWlitpPeQIMc7dXQWxIDyIDga','Dupont',0.0,'',35)
+1719564245607|18|commit|
+1719564255996|18|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.email='jean.dupont@example.com'
+1719564256123|19|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564256142|16|commit|
+1719564289849|21|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id where u1_0.utilisateur_id=35
+1719564289867|16|commit|
+1719564369373|19|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564369395|18|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564369423|19|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564369442|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564369464|19|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564369488|22|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564369509|20|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564369533|22|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564369551|18|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564369571|18|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564369591|18|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564369610|17|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564369631|18|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564369648|16|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564369667|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564369687|18|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564369705|16|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564369723|16|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564369740|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564369761|19|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564369793|17|rollback|
+1719564408104|18|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564408124|18|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564408143|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564408162|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564408181|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564408198|16|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564408216|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564408234|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564408252|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564408272|18|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564408290|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564408309|18|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564408328|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564408347|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564408366|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564408386|18|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564408406|19|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564408424|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564408443|18|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564408461|17|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564408485|17|rollback|
+1719564427418|19|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564427438|17|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564427458|18|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564427474|16|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564427493|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564427511|17|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564427529|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564427550|19|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564427570|18|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564427591|20|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564427609|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564427629|18|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564427648|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564427666|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564427685|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564427702|17|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564427721|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564427738|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564427757|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564427779|20|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564427802|17|rollback|
+1719564444435|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564444454|16|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564444473|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564444490|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564444510|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564444531|19|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564444549|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564444567|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564444586|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564444605|17|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564444623|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564444642|17|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564444661|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564444681|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564444702|18|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564444719|17|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564444738|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564444756|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564444775|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564444793|17|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564444831|20|rollback|
+1719564477005|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564477024|17|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564477042|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564477061|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564477081|19|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564477099|16|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564477122|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564477139|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564477158|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564477176|17|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564477194|17|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564477213|17|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564477231|17|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564477249|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564477267|17|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564477285|17|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564477302|17|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564477321|17|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564477339|17|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564477357|17|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564477382|20|rollback|
+1719564539388|53|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564539444|54|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564539500|55|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564539555|54|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564539611|54|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564539666|54|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564539721|54|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564539776|54|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564539830|53|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564539885|54|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564539940|53|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564539995|54|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564540050|53|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564540105|53|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564540160|54|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564540215|53|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564540272|56|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564540328|54|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564540383|53|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564540438|54|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564540497|53|rollback|
+1719564645909|49|statement|select * from information_schema.sequences
+1719564646392|45|statement|select * from "public"."soiree" where 1=0
+1719564646576|44|statement|select * from "public"."utilisateur" where 1=0
+1719564646869|44|statement|select * from "public"."soiree" where 1=0
+1719564647100|44|statement|select * from "public"."conversation" where 1=0
+1719564647280|44|statement|select * from "public"."utilisateur" where 1=0
+1719564647515|46|statement|select * from "public"."soiree" where 1=0
+1719564647649|44|statement|select * from "public"."utilisateur" where 1=0
+1719564647880|44|statement|select * from "public"."adresse" where 1=0
+1719564648061|44|statement|select * from "public"."utilisateur" where 1=0
+1719564648304|44|statement|select * from "public"."soiree" where 1=0
+1719564648537|44|statement|select * from "public"."soiree" where 1=0
+1719564648775|44|statement|select * from "public"."soiree" where 1=0
+1719564649004|43|statement|select * from "public"."adresse" where 1=0
+1719564649236|44|statement|select * from "public"."conversation" where 1=0
+1719564649368|44|statement|select * from "public"."utilisateur" where 1=0
+1719564653995|45|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719564654071|44|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=30
+1719564654127|45|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=30
+1719564654173|45|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564654219|43|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=30
+1719564654265|44|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=34
+1719564654311|45|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=34
+1719564654356|45|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=34
+1719564654403|44|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=34
+1719564654449|44|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719564654495|44|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719564654540|44|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719564654587|45|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719564654633|44|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564654678|44|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719564654725|45|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719564654772|45|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719564654817|44|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719564654865|47|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719564654915|48|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719564654973|43|rollback|
+1719565338673|34|statement|select * from information_schema.sequences
+1719565339066|29|statement|select * from "public"."soiree" where 1=0
+1719565339211|28|statement|select * from "public"."utilisateur" where 1=0
+1719565339431|28|statement|select * from "public"."soiree" where 1=0
+1719565339615|28|statement|select * from "public"."conversation" where 1=0
+1719565339750|28|statement|select * from "public"."utilisateur" where 1=0
+1719565339950|28|statement|select * from "public"."soiree" where 1=0
+1719565340055|28|statement|select * from "public"."utilisateur" where 1=0
+1719565340238|29|statement|select * from "public"."adresse" where 1=0
+1719565340376|30|statement|select * from "public"."utilisateur" where 1=0
+1719565340558|28|statement|select * from "public"."soiree" where 1=0
+1719565340744|29|statement|select * from "public"."soiree" where 1=0
+1719565340930|28|statement|select * from "public"."soiree" where 1=0
+1719565341114|27|statement|select * from "public"."adresse" where 1=0
+1719565341299|28|statement|select * from "public"."conversation" where 1=0
+1719565341402|28|statement|select * from "public"."utilisateur" where 1=0
+1719565357002|31|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565357058|29|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565357089|30|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565357122|31|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565357220|90|statement|select nextval('conversation_id_seq')
+1719565357268|28|rollback|
+1719565365101|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.email='jean.dupont@example.com'
+1719565365217|29|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719565365259|28|commit|
+1719565403023|29|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id where u1_0.utilisateur_id=35
+1719565403052|28|commit|
+1719565409496|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565409530|32|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565409560|28|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565409589|28|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565409620|29|statement|select nextval('conversation_id_seq')
+1719565409650|28|rollback|
+1719565424418|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565424449|29|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565424479|28|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565424509|29|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565424538|28|statement|select nextval('conversation_id_seq')
+1719565424567|28|rollback|
+1719565451799|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565451831|30|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565451862|28|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565451892|29|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565451923|29|statement|select nextval('conversation_id_seq')
+1719565451952|28|rollback|
+1719565883058|34|statement|select * from information_schema.sequences
+1719565883462|30|statement|select * from "public"."soiree" where 1=0
+1719565883604|30|statement|select * from "public"."utilisateur" where 1=0
+1719565883828|30|statement|select * from "public"."soiree" where 1=0
+1719565884021|31|statement|select * from "public"."conversation" where 1=0
+1719565884165|31|statement|select * from "public"."utilisateur" where 1=0
+1719565884363|33|statement|select * from "public"."soiree" where 1=0
+1719565884473|31|statement|select * from "public"."utilisateur" where 1=0
+1719565884664|30|statement|select * from "public"."adresse" where 1=0
+1719565884808|31|statement|select * from "public"."utilisateur" where 1=0
+1719565885000|34|statement|select * from "public"."soiree" where 1=0
+1719565885190|32|statement|select * from "public"."soiree" where 1=0
+1719565885380|31|statement|select * from "public"."soiree" where 1=0
+1719565885568|31|statement|select * from "public"."adresse" where 1=0
+1719565885757|31|statement|select * from "public"."conversation" where 1=0
+1719565885864|31|statement|select * from "public"."utilisateur" where 1=0
+1719565952021|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565952087|32|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565952121|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565952157|34|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565952195|31|statement|select nextval('conversation_id_seq')
+1719565952242|32|rollback|
+1719565955683|32|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id where u1_0.utilisateur_id=35
+1719565955716|31|commit|
+1719565963785|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=34
+1719565963820|32|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=34
+1719565963853|32|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719565963887|32|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719565963920|31|statement|select nextval('conversation_id_seq')
+1719565963955|33|rollback|
+1719566678057|39|statement|select * from information_schema.sequences
+1719566678459|31|statement|select * from "public"."soiree" where 1=0
+1719566678608|30|statement|select * from "public"."utilisateur" where 1=0
+1719566678836|31|statement|select * from "public"."soiree" where 1=0
+1719566679032|31|statement|select * from "public"."conversation" where 1=0
+1719566679181|35|statement|select * from "public"."utilisateur" where 1=0
+1719566679369|32|statement|select * from "public"."soiree" where 1=0
+1719566679481|35|statement|select * from "public"."utilisateur" where 1=0
+1719566679673|31|statement|select * from "public"."adresse" where 1=0
+1719566679816|31|statement|select * from "public"."utilisateur" where 1=0
+1719566680009|31|statement|select * from "public"."soiree" where 1=0
+1719566680200|30|statement|select * from "public"."soiree" where 1=0
+1719566680389|32|statement|select * from "public"."soiree" where 1=0
+1719566680581|31|statement|select * from "public"."adresse" where 1=0
+1719566680782|36|statement|select * from "public"."conversation" where 1=0
+1719566680894|31|statement|select * from "public"."utilisateur" where 1=0
+1719567418063|32|statement|select * from information_schema.sequences
+1719567418444|28|statement|select * from "public"."soiree" where 1=0
+1719567418580|28|statement|select * from "public"."utilisateur" where 1=0
+1719567418797|29|statement|select * from "public"."soiree" where 1=0
+1719567418981|28|statement|select * from "public"."conversation" where 1=0
+1719567419112|28|statement|select * from "public"."utilisateur" where 1=0
+1719567419298|30|statement|select * from "public"."soiree" where 1=0
+1719567419401|28|statement|select * from "public"."utilisateur" where 1=0
+1719567419585|29|statement|select * from "public"."adresse" where 1=0
+1719567419720|28|statement|select * from "public"."utilisateur" where 1=0
+1719567419910|30|statement|select * from "public"."soiree" where 1=0
+1719567420095|30|statement|select * from "public"."soiree" where 1=0
+1719567420280|28|statement|select * from "public"."soiree" where 1=0
+1719567420465|29|statement|select * from "public"."adresse" where 1=0
+1719567420653|29|statement|select * from "public"."conversation" where 1=0
+1719567420757|29|statement|select * from "public"."utilisateur" where 1=0
+1719567552613|33|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.email='jean.dupont@example.com'
+1719567552748|28|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719567552794|28|commit|
+1719567570821|0|rollback|
+1719567692456|32|statement|select * from information_schema.sequences
+1719567692846|29|statement|select * from "public"."soiree" where 1=0
+1719567692982|28|statement|select * from "public"."utilisateur" where 1=0
+1719567693201|31|statement|select * from "public"."soiree" where 1=0
+1719567693385|28|statement|select * from "public"."conversation" where 1=0
+1719567693522|28|statement|select * from "public"."utilisateur" where 1=0
+1719567693705|28|statement|select * from "public"."soiree" where 1=0
+1719567693810|28|statement|select * from "public"."utilisateur" where 1=0
+1719567693993|28|statement|select * from "public"."adresse" where 1=0
+1719567694130|28|statement|select * from "public"."utilisateur" where 1=0
+1719567694318|32|statement|select * from "public"."soiree" where 1=0
+1719567694502|29|statement|select * from "public"."soiree" where 1=0
+1719567694685|27|statement|select * from "public"."soiree" where 1=0
+1719567694869|28|statement|select * from "public"."adresse" where 1=0
+1719567695054|30|statement|select * from "public"."conversation" where 1=0
+1719567695159|30|statement|select * from "public"."utilisateur" where 1=0
+1719567700110|33|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719567700214|29|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719567700245|28|commit|
+1719567711899|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719567711931|28|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719567711972|29|statement|select s1_0.adresse_id,s1_0.id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.organisateur_id,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.adresse_id=31
+1719567712003|30|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719567712034|29|statement|select u1_0.adresse_id,u1_0.id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.adresse_id=31
+1719567712069|32|statement|select a1_0.utilisateur_id,a1_0.id,a1_0.commentaire,a1_0.date_creation,a1_0.note,a1_0.soiree_id from avis a1_0 where a1_0.utilisateur_id=35
+1719567712098|29|statement|select m1_0.utilisateur_id,m1_0.id,m1_0.contenu,m1_0.conversation_id,m1_0.date_envoi from message m1_0 where m1_0.utilisateur_id=35
+1719567712129|29|statement|select p1_0.utilisateur_id,p1_0.id,p1_0.date_demande,p1_0.date_reponse,p1_0.soiree_id,p1_0.statut from participation p1_0 where p1_0.utilisateur_id=35
+1719567712159|29|statement|select s1_0.organisateur_id,s1_0.id,s1_0.adresse_id,s1_0.apportez_boissons_aperitifs,s1_0.date_heure,s1_0.date_publication,s1_0.description,s1_0.est_payante,s1_0.nb_places_restantes,s1_0.nb_places_total,s1_0.nom,s1_0.prix,s2_0.soiree_id,s2_0.theme,s4_0.soiree_id,s4_0.jeux_proposes,s6_0.soiree_id,s6_0.jeux_proposes,s6_0.nb_pc_disponibles,s6_0.plateforme,s1_0.type_soiree from soiree s1_0 left join soireeclassique s2_0 on s1_0.id=s2_0.soiree_id left join soireejeuxsociete s4_0 on s1_0.id=s4_0.soiree_id left join soireejeuxvideo s6_0 on s1_0.id=s6_0.soiree_id where s1_0.organisateur_id=35
+1719567712189|28|statement|select c1_0.utilisateur_id,c1_1.id,c1_1.date_creation,c1_1.est_groupe,c1_1.soiree_id from utilisateur_conversation c1_0 join conversation c1_1 on c1_1.id=c1_0.conversation_id where c1_0.utilisateur_id=35
+1719567712229|27|rollback|
+1719568013084|35|statement|select * from information_schema.sequences
+1719568013489|27|statement|select * from "public"."soiree" where 1=0
+1719568013636|28|statement|select * from "public"."utilisateur" where 1=0
+1719568013860|29|statement|select * from "public"."soiree" where 1=0
+1719568014048|28|statement|select * from "public"."conversation" where 1=0
+1719568014096|31|statement|select * from information_schema.sequences
+1719568014181|27|statement|select * from "public"."utilisateur" where 1=0
+1719568014366|28|statement|select * from "public"."soiree" where 1=0
+1719568014470|28|statement|select * from "public"."utilisateur" where 1=0
+1719568014483|28|statement|select * from "public"."soiree" where 1=0
+1719568014621|27|statement|select * from "public"."utilisateur" where 1=0
+1719568014652|26|statement|select * from "public"."adresse" where 1=0
+1719568014792|30|statement|select * from "public"."utilisateur" where 1=0
+1719568014840|27|statement|select * from "public"."soiree" where 1=0
+1719568014973|27|statement|select * from "public"."soiree" where 1=0
+1719568015021|27|statement|select * from "public"."conversation" where 1=0
+1719568015153|27|statement|select * from "public"."utilisateur" where 1=0
+1719568015156|27|statement|select * from "public"."soiree" where 1=0
+1719568015335|27|statement|select * from "public"."soiree" where 1=0
+1719568015335|27|statement|select * from "public"."soiree" where 1=0
+1719568015441|28|statement|select * from "public"."utilisateur" where 1=0
+1719568015520|28|statement|select * from "public"."adresse" where 1=0
+1719568015631|30|statement|select * from "public"."adresse" where 1=0
+1719568015707|28|statement|select * from "public"."conversation" where 1=0
+1719568015764|27|statement|select * from "public"."utilisateur" where 1=0
+1719568015811|29|statement|select * from "public"."utilisateur" where 1=0
+1719568015944|27|statement|select * from "public"."soiree" where 1=0
+1719568016130|28|statement|select * from "public"."soiree" where 1=0
+1719568016312|27|statement|select * from "public"."soiree" where 1=0
+1719568016492|28|statement|select * from "public"."adresse" where 1=0
+1719568016681|27|statement|select * from "public"."conversation" where 1=0
+1719568016780|27|statement|select * from "public"."utilisateur" where 1=0
+1719568134396|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.email='jean.dupont@example.com'
+1719568134543|27|statement|select a1_0.id,a1_0.code_postal,a1_0.libelle,a1_0.nom_lieu,a1_0.region,a1_0.ville from adresse a1_0 where a1_0.id=31
+1719568134591|28|commit|
+1719568149149|28|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719568149187|28|statement|select nextval('conversation_id_seq')
+1719568149249|34|statement|insert into conversation (date_creation,est_groupe,soiree_id,id) values ('2024-06-28T11:49:09.151+0200',false,NULL,36)
+1719568149287|30|statement|insert into utilisateur_conversation (conversation_id,utilisateur_id) values (36,35)
+1719568149315|28|commit|
+1719568154210|28|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719568154250|29|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719568154289|31|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719568154321|28|commit|
+1719568163977|28|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where c1_0.id=1
+1719568164007|27|rollback|
+1719568172668|28|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where c1_0.id=36
+1719568172699|28|commit|
+1719568188803|28|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.id=36
+1719568188874|68|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719568188990|113|statement|select nextval('message_id_seq')
+1719568189104|110|statement|insert into message (contenu,conversation_id,date_envoi,utilisateur_id,id) values ('"Ceci est un message de test"',36,'2024-06-28T11:49:48.875+0200',35,1)
+1719568189136|32|commit|
+1719568201590|27|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where c1_0.soiree_id=1 and c1_0.est_groupe=true
+1719568201620|28|rollback|
+1719568209817|29|statement|select u1_0.id,u1_0.adresse_id,u1_0.centres_interets,u1_0.date_naissance,u1_0.email,u1_0.mot_de_passe,u1_0.nom,u1_0.note_moyenne,u1_0.prenom from utilisateur u1_0 where u1_0.id=35
+1719568209852|31|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id from conversation c1_0 where 35 in (select u1_0.utilisateur_id from utilisateur_conversation u1_0 where c1_0.id=u1_0.conversation_id)
+1719568209882|28|statement|select u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from utilisateur_conversation u1_0 join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where u1_0.conversation_id=36
+1719568209910|28|commit|
+1719575798829|101|statement|select * from information_schema.sequences
+1719575799322|32|statement|select * from "public"."soiree" where 1=0
+1719575799462|32|statement|select * from "public"."utilisateur" where 1=0
+1719575799596|27|statement|select * from "public"."utilisateur" where 1=0
+1719575799783|27|statement|select * from "public"."soiree" where 1=0
+1719575799970|29|statement|select * from "public"."conversation" where 1=0
+1719575800106|28|statement|select * from "public"."utilisateur" where 1=0
+1719575800289|27|statement|select * from "public"."soiree" where 1=0
+1719575800394|28|statement|select * from "public"."utilisateur" where 1=0
+1719575800583|32|statement|select * from "public"."adresse" where 1=0
+1719575800714|28|statement|select * from "public"."utilisateur" where 1=0
+1719575800905|27|statement|select * from "public"."soiree" where 1=0
+1719575801090|27|statement|select * from "public"."soiree" where 1=0
+1719575801272|26|statement|select * from "public"."soiree" where 1=0
+1719575801451|27|statement|select * from "public"."adresse" where 1=0
+1719575801636|27|statement|select * from "public"."conversation" where 1=0
+1719575801736|27|statement|select * from "public"."utilisateur" where 1=0
+1719575817147|41|statement|select c1_0.id,c1_0.date_creation,c1_0.est_groupe,c1_0.soiree_id,u1_0.conversation_id,u1_1.id,u1_1.adresse_id,u1_1.centres_interets,u1_1.date_naissance,u1_1.email,u1_1.mot_de_passe,u1_1.nom,u1_1.note_moyenne,u1_1.prenom from conversation c1_0 left join utilisateur_conversation u1_0 on c1_0.id=u1_0.conversation_id left join utilisateur u1_1 on u1_1.id=u1_0.utilisateur_id where c1_0.id=36
+1719575817213|30|statement|select m1_0.conversation_id,m1_0.id,m1_0.contenu,m1_0.date_envoi,m1_0.utilisateur_id from message m1_0 where m1_0.conversation_id=36
+1719575817242|27|commit|

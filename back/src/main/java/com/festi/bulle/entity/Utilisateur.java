@@ -6,11 +6,13 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"adresse", "avis", "messages", "participations", "soirees", "conversations"})
 @AllArgsConstructor
 @Entity
 @Table(name = "utilisateur")
@@ -80,7 +82,7 @@ public class Utilisateur {
         this.soirees = new LinkedHashSet<>();
         this.conversations = new LinkedHashSet<>();
         this.adresse = new Adresse("", "", "", "", "");
-        this.dateNaissance= LocalDate.now().minusYears(18);
+        this.dateNaissance = LocalDate.now().minusYears(18);
         this.prenom = "";
     }
 
@@ -89,5 +91,18 @@ public class Utilisateur {
         this.email = email;
         this.motDePasse = motDePasse;
         this.nom = nom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Utilisateur)) return false;
+        Utilisateur that = (Utilisateur) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
