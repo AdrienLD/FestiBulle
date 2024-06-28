@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class RechercheDTO {
     private String nom;
-    private Integer adresseId;
+    private String ville;
     private String typeSoiree;
     private Integer nbPersonnes;
     private Boolean estPayante;
